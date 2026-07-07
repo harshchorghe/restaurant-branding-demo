@@ -19,22 +19,22 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="gallery" className="relative py-12 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section id="gallery" className="relative py-8 md:py-24 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-3">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
             Visual Story
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
             Signature <span className="text-gold-gradient">Gallery</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-4" />
-          <p className="font-poppins text-brand-muted text-sm md:text-base max-w-lg mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
+          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             A visual feast of our culinary creations. Click on any photo to experience close-up details.
           </p>
         </div>

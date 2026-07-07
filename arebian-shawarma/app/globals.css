@@ -59,7 +59,6 @@ body {
   margin-right: auto !important;
 }
 
-/* Premium Utilities */
 .glass-card {
   background: rgba(59, 36, 23, 0.45);
   backdrop-filter: blur(16px);
@@ -75,6 +74,22 @@ body {
   background: rgba(59, 36, 23, 0.6);
   border-color: rgba(212, 164, 77, 0.4);
   box-shadow: 0 12px 40px 0 rgba(212, 164, 77, 0.15);
+  transform: translateY(-5px);
+}
+
+.glass-card-cream {
+  background: #FCF9F2 !important;
+  border: 1.5px solid rgba(184, 134, 11, 0.3) !important;
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-cream-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-cream-hover:hover {
+  background: #FFFDF9 !important;
+  border-color: rgba(212, 164, 77, 0.7) !important;
+  box-shadow: 0 16px 45px -10px rgba(212, 164, 77, 0.3);
   transform: translateY(-5px);
 }
 

@@ -132,28 +132,28 @@ export default function PopularDishes() {
   const [selectedDish, setSelectedDish] = useState<typeof DISHES[0] | null>(null);
 
   return (
-    <section id="menu" className="relative py-12 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section id="menu" className="relative py-8 md:py-24 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
       {/* Glow backgrounds */}
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-3">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
             Best Sellers
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
             Popular <span className="text-gold-gradient">Dishes</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-4" />
-          <p className="font-poppins text-brand-muted text-sm md:text-base max-w-lg mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
+          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             Our highly-rated signature wraps and meals, prepared freshly on order with the highest culinary standards.
           </p>
         </div>
 
         {/* Dishes Horizontal Scroll Container */}
-        <div className="flex gap-8 overflow-x-auto pb-10 pt-4 px-6 -mx-6 md:px-12 md:-mx-12 scrollbar-thin scrollbar-thumb-brand-gold scrollbar-track-brand-primary/10 snap-x snap-mandatory">
+        <div className="flex gap-4 md:gap-8 overflow-x-auto pb-6 pt-2 md:pb-10 md:pt-4 px-6 -mx-6 md:px-12 md:-mx-12 scrollbar-thin scrollbar-thumb-brand-gold scrollbar-track-brand-primary/10 snap-x snap-mandatory">
           {DISHES.map((dish, index) => (
             <motion.div
               key={dish.id}
@@ -162,12 +162,12 @@ export default function PopularDishes() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
               onClick={() => setSelectedDish(dish)}
-              className="glass-card rounded-3xl overflow-hidden glass-card-hover flex flex-col justify-between cursor-pointer group flex-shrink-0 w-[290px] sm:w-[360px] snap-center"
+              className="glass-card-cream rounded-3xl overflow-hidden glass-card-cream-hover flex flex-col justify-between cursor-pointer group flex-shrink-0 w-[240px] sm:w-[360px] snap-center"
             >
               {/* Image Area */}
-              <div className="relative h-64 overflow-hidden">
-                {/* Ambient dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary via-transparent to-transparent z-10 opacity-60" />
+              <div className="relative h-40 sm:h-48 md:h-64 overflow-hidden">
+                {/* Ambient cream gradient overlay fading to card body */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F5EFEB] via-transparent to-transparent z-10 opacity-80" />
                 <Image
                   src={dish.image}
                   alt={dish.name}
@@ -175,39 +175,39 @@ export default function PopularDishes() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 {/* Premium tag */}
-                <div className="absolute top-4 left-4 z-20 bg-brand-primary/80 backdrop-blur-md border border-brand-gold/30 px-3 py-1 rounded-full flex items-center gap-1.5">
-                  <Star className="w-3 h-3 fill-brand-gold stroke-brand-gold" />
-                  <span className="font-montserrat text-[10px] font-bold text-brand-gold tracking-wide">
+                <div className="absolute top-3 left-3 md:top-4 md:left-4 z-25 bg-[#2B1B12]/80 backdrop-blur-md border border-brand-gold/30 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full flex items-center gap-1">
+                  <Star className="w-2.5 h-2.5 md:w-3 md:h-3 fill-brand-gold stroke-brand-gold" />
+                  <span className="font-montserrat text-[8px] md:text-[10px] font-bold text-brand-gold tracking-wide">
                     {dish.rating} ({dish.reviews})
                   </span>
                 </div>
               </div>
 
               {/* Contents */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-4 md:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-playfair text-xl font-bold text-brand-white group-hover:text-brand-gold transition-colors">
+                  <div className="flex justify-between items-start mb-1 md:mb-2">
+                    <h3 className="font-playfair text-sm sm:text-base md:text-xl font-bold text-brand-primary group-hover:text-brand-gold transition-colors">
                       {dish.name}
                     </h3>
-                    <span className="font-montserrat text-lg font-extrabold text-brand-gold">
+                    <span className="font-montserrat text-sm md:text-lg font-extrabold text-brand-gold">
                       {dish.price}
                     </span>
                   </div>
-                  <p className="font-poppins text-brand-muted text-xs leading-relaxed mt-3">
+                  <p className="font-poppins text-brand-secondary/80 text-[10px] md:text-xs leading-relaxed mt-1.5 md:mt-3">
                     {dish.description}
                   </p>
                 </div>
 
-                <div className="mt-8 flex gap-4">
+                <div className="mt-4 md:mt-8 flex gap-4">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedDish(dish);
                     }}
-                    className="flex-1 bg-brand-secondary border border-brand-gold/30 hover:bg-brand-gold hover:text-brand-primary font-montserrat text-[10px] font-bold tracking-widest uppercase py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-[0.98] select-none"
+                    className="flex-1 bg-brand-primary text-brand-white border border-brand-gold/20 hover:bg-brand-gold hover:text-brand-primary font-montserrat text-[9px] md:text-[10px] font-bold tracking-widest uppercase py-2.5 md:py-3.5 rounded-xl flex items-center justify-center gap-1.5 md:gap-2 transition-all active:scale-[0.98] select-none"
                   >
-                    <BookOpen className="w-3.5 h-3.5" />
+                    <BookOpen className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     Recipe & Story
                   </button>
                 </div>

@@ -34,7 +34,7 @@ export default function Hero() {
       id="home"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[85vh] flex items-center justify-center bg-brand-primary overflow-hidden pt-24 pb-12 px-6 md:px-12"
+      className="relative min-h-[75vh] md:min-h-screen flex items-center justify-center bg-brand-primary overflow-hidden pt-20 pb-10 md:pt-20 md:pb-20 px-6 md:px-12"
     >
       {/* 1. Immersive Atmospheric Backdrop Background */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-secondary/80 via-brand-primary to-brand-primary" />
@@ -43,24 +43,23 @@ export default function Hero() {
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       {/* Ambient Gold Light Backdrops */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[450px] h-[450px] bg-brand-gold/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-brand-gold/10 rounded-full blur-[80px] md:blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[200px] md:w-[450px] h-[200px] md:h-[450px] bg-brand-gold/5 rounded-full blur-[80px] md:blur-[130px] pointer-events-none" />
 
-      {/* 2. Floating Arabic Geometric Patterns in Background */}
-      <div className="absolute top-20 right-10 w-96 h-96 opacity-[0.04] pointer-events-none select-none drift-slow">
-        <svg viewBox="0 0 100 100" fill="none" stroke="#D4A44D" strokeWidth="0.5">
-          {/* Detailed Arabic Mandala Geometric shape */}
-          <circle cx="50" cy="50" r="40" />
-          <polygon points="50,10 90,50 50,90 10,50" />
-          <polygon points="50,15 85,50 50,85 15,50" />
-          <rect x="25" y="25" width="50" height="50" transform="rotate(45 50 50)" />
-          <rect x="28" y="28" width="44" height="44" transform="rotate(30 50 50)" />
-          <rect x="28" y="28" width="44" height="44" transform="rotate(60 50 50)" />
-        </svg>
-      </div>
+      {/* 2. Floating Luxury Elements & Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        {/* Decorative Golden Star Ornament */}
+        <div className="absolute top-28 left-[10%] opacity-25 select-none animate-spin-slow hidden md:block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#D4A44D" />
+          </svg>
+        </div>
+        <div className="absolute bottom-28 right-[10%] opacity-20 select-none animate-spin-slow hidden md:block">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#D4A44D" />
+          </svg>
+        </div>
 
-      {/* 3. Floating Spice Flakes Particles */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Animated Spice Flake 1 */}
         <motion.div
           animate={{
@@ -68,8 +67,8 @@ export default function Hero() {
             x: [0, 40, 0],
             rotate: [0, 360],
           }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/3 left-10 w-3 h-3 bg-brand-gold/20 rounded-full blur-[1px]"
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          className="absolute bottom-1/4 left-1/4 w-3.5 h-3.5 bg-brand-gold/25 rounded-sm rotate-12 blur-[0.5px] hidden md:block"
         />
         {/* Animated Spice Flake 2 */}
         <motion.div
@@ -94,7 +93,7 @@ export default function Hero() {
       </div>
 
       {/* 4. Hero Content Grid Container */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 w-full">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center z-10 w-full">
         {/* Left Side: Brand Story & Text Entrances */}
         <div className="lg:col-span-6 flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* Subtle Accent Label */}
@@ -102,10 +101,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-secondary border border-brand-gold/20 mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-brand-secondary border border-brand-gold/20 mb-4 md:mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-            <span className="font-montserrat text-[10px] tracking-[0.2em] font-semibold text-brand-cream uppercase">
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-gold animate-pulse" />
+            <span className="font-montserrat text-[8px] md:text-[10px] tracking-[0.2em] font-semibold text-brand-cream uppercase">
               Authentic Arabian Shawarma
             </span>
           </motion.div>
@@ -115,10 +114,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-playfair text-5xl md:text-7xl font-black text-brand-white leading-tight uppercase"
+            className="font-playfair text-3xl sm:text-4xl md:text-7xl font-black text-brand-white leading-tight uppercase"
           >
-            Fresh. <br />
-            Juicy. <br />
+            Fresh. <br className="hidden md:block" />
+            Juicy. <br className="hidden md:block" />
             <span className="text-gold-gradient gold-text-glow">Grilled To Perfection.</span>
           </motion.h2>
 
@@ -127,7 +126,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-poppins text-brand-muted text-base md:text-lg max-w-lg mt-6 leading-relaxed"
+            className="font-poppins text-brand-muted text-xs md:text-lg max-w-lg mt-3 md:mt-6 leading-relaxed"
           >
             Experience the rich, charcoal-grilled flavors of the Middle East made with secret organic spices, slow-roasted succulent meats, and freshly baked flatbread.
           </motion.p>
@@ -137,30 +136,28 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap justify-center lg:justify-start gap-4 mt-10"
+            className="flex flex-wrap justify-center lg:justify-start gap-3 mt-6 md:mt-10"
           >
             <a
-              href="#contact"
-              className="bg-gold-gradient text-brand-primary font-montserrat text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-full flex items-center gap-2 shadow-[0_4px_15px_rgba(212,164,77,0.3)] hover:shadow-[0_8px_25px_rgba(212,164,77,0.5)] transition-all"
+              href="#menu"
+              className="bg-gold-gradient text-brand-primary font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full shadow-[0_4px_15px_rgba(212,164,77,0.25)] hover:shadow-[0_4px_25px_rgba(212,164,77,0.45)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
             >
-              <ShoppingBag className="w-4 h-4" />
-              Order Now
+              Order Online
             </a>
-
             <a
               href="#menu"
-              className="border border-brand-gold/40 text-brand-gold hover:text-brand-primary hover:bg-brand-gold font-montserrat text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-full flex items-center gap-2 transition-all backdrop-blur-sm"
+              className="border border-brand-gold/40 text-brand-gold hover:text-brand-primary hover:bg-brand-gold font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full flex items-center gap-2 transition-all backdrop-blur-sm"
             >
-              <Compass className="w-4 h-4" />
+              <Compass className="w-3.5 h-3.5" />
               Explore Menu
             </a>
           </motion.div>
         </div>
 
         {/* Right Side: Interactive Floating Shawarma */}
-        <div className="lg:col-span-6 flex justify-center items-center relative h-[380px] md:h-[500px]">
+        <div className="lg:col-span-6 flex justify-center items-center relative h-[260px] md:h-[500px]">
           {/* Subtle background circular glow behind image */}
-          <div className="absolute w-80 h-80 rounded-full bg-brand-gold/15 filter blur-[60px]" />
+          <div className="absolute w-52 md:w-80 h-52 md:h-80 rounded-full bg-brand-gold/15 filter blur-[50px] md:blur-[60px]" />
 
           {/* Interactive Mouse Tilt Wrapper */}
           <motion.div
@@ -171,16 +168,16 @@ export default function Hero() {
               y: translateY,
               transformStyle: 'preserve-3d',
             }}
-            className="relative w-[280px] md:w-[380px] h-[340px] md:h-[460px] flex items-center justify-center float-animation cursor-grab active:cursor-grabbing select-none"
+            className="relative w-[200px] md:w-[380px] h-[240px] md:h-[460px] flex items-center justify-center float-animation cursor-grab active:cursor-grabbing select-none"
           >
             {/* Steam particles rising from the shawarma */}
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex gap-4 w-20 justify-center">
+            <div className="absolute -top-6 md:-top-10 left-1/2 -translate-x-1/2 flex gap-3 md:gap-4 w-20 justify-center">
               {[0, 1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-1 bg-brand-cream/15 rounded-full steam-particle"
+                  className="w-0.5 md:w-1 bg-brand-cream/15 rounded-full steam-particle"
                   style={{
-                    height: `${24 + i * 8}px`,
+                    height: `${16 + i * 6}px`,
                     animationDelay: `${i * 0.7}s`,
                     animationDuration: `${5 + i}s`,
                   }}
@@ -195,7 +192,7 @@ export default function Hero() {
               width={380}
               height={460}
               priority
-              className="object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_20px_rgba(212,164,77,0.15)] pointer-events-none select-none"
+              className="object-contain w-[180px] h-[220px] md:w-[380px] md:h-[460px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_20px_rgba(212,164,77,0.15)] pointer-events-none select-none"
             />
           </motion.div>
         </div>

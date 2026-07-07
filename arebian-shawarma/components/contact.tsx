@@ -20,28 +20,28 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="contact" className="relative py-8 md:py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Glow effect */}
       <div className="absolute bottom-1/3 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-3">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
             Visit Us
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
             Get In <span className="text-gold-gradient">Touch</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-4" />
+          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
           {/* Left Side: Contact Form Card */}
           <div className="lg:col-span-6">
-            <div className="glass-card rounded-3xl p-8 border-brand-gold/15 h-full">
-              <h3 className="font-playfair text-xl font-bold text-brand-white mb-6 uppercase tracking-wider">
+            <div className="glass-card rounded-3xl p-6 md:p-8 border-brand-gold/15 h-full">
+              <h3 className="font-playfair text-lg md:text-xl font-bold text-brand-white mb-4 md:mb-6 uppercase tracking-wider">
                 Send Us A Message
               </h3>
 
@@ -123,49 +123,49 @@ export default function Contact() {
           {/* Right Side: Details and Map Mockup */}
           <div className="lg:col-span-6 flex flex-col justify-between gap-8">
             
-            {/* Contacts Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="glass-card rounded-2xl p-6 border-brand-gold/15 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary border border-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+            {/* Contacts Grid (2x2 on Mobile and Desktop) */}
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0 animate-pulse">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream">Phone</h4>
-                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">+91 99999 99999</span>
-                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Toll free ordering</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Phone</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">+91 99999 99999</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Toll free ordering</span>
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-6 border-brand-gold/15 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary border border-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+              <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream">Email</h4>
-                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">hello@arabian.com</span>
-                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Support & Catering</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Email</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">hello@arabian.com</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Support & Catering</span>
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-6 border-brand-gold/15 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary border border-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+              <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream">Location</h4>
-                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">Vasai West, Vasai-Virar</span>
-                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Maharashtra 401207, India</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Location</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">Vasai West, Vasai-Virar</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Maharashtra 401207</span>
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-6 border-brand-gold/15 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary border border-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+              <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream">Hours</h4>
-                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">12:00 PM - 11:30 PM</span>
-                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Fri - Sat till 1:00 AM</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Hours</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">12:00 PM - 11:30 PM</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Fri - Sat till 1:00 AM</span>
                 </div>
               </div>
             </div>

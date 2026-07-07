@@ -31,20 +31,20 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative py-12 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section className="relative py-8 md:py-24 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-brand-gold/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto z-10 relative">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-3">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
             Got Questions?
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
             Frequently Asked <span className="text-gold-gradient">FAQs</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-4" />
+          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
         </div>
 
         {/* FAQ Accordion List */}

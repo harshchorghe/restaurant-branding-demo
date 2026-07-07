@@ -35,18 +35,30 @@ const REVIEWS = [
   },
 ];
 
-export default function Reviews() {
+interface ReviewType {
+  id: number;
+  name: string;
+  role: string;
+  rating: number;
+  text: string;
+}
+
+interface ReviewsProps {
+  reviews?: ReviewType[];
+}
+
+export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
   const nextSlide = () => {
     setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % REVIEWS.length);
+    setActiveIndex((prev) => (prev + 1) % reviews.length);
   };
 
   const prevSlide = () => {
     setDirection(-1);
-    setActiveIndex((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length);
+    setActiveIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
   useEffect(() => {
@@ -56,7 +68,7 @@ export default function Reviews() {
 
   // Helper function to calculate position class and state
   const getCardProperties = (index: number) => {
-    const total = REVIEWS.length;
+    const total = reviews.length;
     // Calculate circular distance
     let diff = index - activeIndex;
     
@@ -64,7 +76,7 @@ export default function Reviews() {
     if (diff < -1) diff += total;
     if (diff > 1) diff -= total;
 
-    // Handle wrap edges for 4 items
+    // Handle wrap edges for total items
     if (activeIndex === 0 && index === total - 1) diff = -1;
     if (activeIndex === total - 1 && index === 0) diff = 1;
 
@@ -78,7 +90,7 @@ export default function Reviews() {
   };
 
   return (
-    <section id="reviews" className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="reviews" className="relative py-8 md:py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
       <div className="absolute top-1/4 left-10 w-96 h-96 opacity-[0.015] pointer-events-none select-none drift-slow">
@@ -91,23 +103,23 @@ export default function Reviews() {
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-3">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
             Guest Journal
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
-            Loved By <span className="text-gold-gradient">Food Lovers ❤️</span>
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+            Loved By <span className="text-gold-gradient">Food Lovers </span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-4" />
-          <p className="font-poppins text-brand-muted text-sm md:text-base max-w-lg mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
+          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             Do not just take our word for it. Here is what our premium diners have to say about their experience.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative w-full max-w-4xl mx-auto h-[400px] flex items-center justify-center overflow-hidden px-4">
-          <div className="relative w-full h-[320px] flex items-center justify-center">
-            {REVIEWS.map((review, idx) => {
+        <div className="relative w-full max-w-4xl mx-auto h-[340px] md:h-[400px] flex items-center justify-center overflow-hidden px-4">
+          <div className="relative w-full h-[270px] md:h-[320px] flex items-center justify-center">
+            {reviews.map((review, idx) => {
               const { diff, isActive, isLeft, isRight, isHidden } = getCardProperties(idx);
 
               if (isHidden) return null;
@@ -128,41 +140,41 @@ export default function Reviews() {
                   animate={{
                     x: xPosition,
                     scale: isActive ? 1.05 : 0.85,
-                    opacity: isActive ? 1 : 0.45,
+                    opacity: isActive ? 1 : 0.7,
                     filter: isActive ? 'blur(0px)' : 'blur(4px)',
                   }}
                   transition={{
                     duration: 0.65,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className={`w-full max-w-[280px] sm:max-w-[420px] rounded-3xl p-6 sm:p-8 flex flex-col justify-between h-[300px] sm:h-[280px] select-none ${
+                  className={`w-full max-w-[245px] sm:max-w-[420px] rounded-3xl p-5 md:p-8 flex flex-col justify-between h-[240px] md:h-[280px] select-none transition-all ${
                     isActive
-                      ? 'glass-card border-brand-gold/40 shadow-[0_15px_40px_rgba(212,164,77,0.15)] bg-brand-secondary/60'
-                      : 'bg-brand-secondary/30 border border-brand-gold/5'
+                      ? 'glass-card-cream border-brand-gold shadow-[0_15px_40px_rgba(43,27,18,0.1)]'
+                      : 'glass-card-cream opacity-50 border border-brand-gold/5'
                   }`}
                 >
                   {/* Card Header Quote */}
                   <div className="flex justify-between items-start">
                     <div className="flex gap-1">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-brand-gold stroke-brand-gold" />
+                        <Star key={i} className="w-3 h-3 md:w-3.5 md:h-3.5 fill-brand-gold stroke-brand-gold" />
                       ))}
                     </div>
-                    <Quote className="w-8 h-8 text-brand-gold/20" />
+                    <Quote className="w-6 h-6 md:w-8 md:h-8 text-brand-gold/30" />
                   </div>
 
                   {/* Body Review Text */}
-                  <p className="font-poppins text-brand-white/95 text-xs sm:text-sm italic leading-relaxed mt-4 flex-1">
+                  <p className="font-poppins text-brand-primary text-[10px] md:text-sm italic leading-relaxed mt-2 md:mt-4 flex-1">
                     "{review.text}"
                   </p>
 
                   {/* Guest Info */}
-                  <div className="border-t border-brand-gold/10 pt-4 mt-4 flex items-center justify-between">
+                  <div className="border-t border-brand-gold/15 pt-2.5 mt-2.5 md:pt-4 md:mt-4 flex items-center justify-between">
                     <div>
-                      <h4 className="font-playfair text-sm sm:text-base font-bold text-brand-gold">
+                      <h4 className="font-playfair text-xs md:text-base font-bold text-brand-primary">
                         {review.name}
                       </h4>
-                      <span className="font-montserrat text-[9px] tracking-wider text-brand-cream/70 uppercase">
+                      <span className="font-montserrat text-[8px] md:text-[9px] tracking-wider text-brand-secondary/80 uppercase">
                         {review.role}
                       </span>
                     </div>
@@ -187,7 +199,7 @@ export default function Reviews() {
             
             {/* Slide Indicators */}
             <div className="flex items-center gap-2">
-              {REVIEWS.map((_, index) => (
+              {reviews.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => {

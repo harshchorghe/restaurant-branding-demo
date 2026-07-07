@@ -1,31 +1,49 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Star, X, MessageSquareQuote } from 'lucide-react';
 
-export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+interface FooterProps {
+  onAddReview?: (review: { name: string; text: string; rating: number; role: string }) => void;
+}
 
-  const handleSubscribe = (e: React.FormEvent) => {
+export default function Footer({ onAddReview }: FooterProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [rating, setRating] = useState(5);
+  const [text, setText] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmitFeedback = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
+    if (name && text) {
+      if (onAddReview) {
+        onAddReview({
+          name,
+          text,
+          rating,
+          role: 'Guest Reviewer',
+        });
+      }
+      setSubmitted(true);
       setTimeout(() => {
-        setSubscribed(false);
-        setEmail('');
-      }, 3000);
+        setSubmitted(false);
+        setIsModalOpen(false); // Auto-close modal after successful submission
+        setName('');
+        setRating(5);
+        setText('');
+      }, 1500);
     }
   };
 
   return (
-    <footer className="relative bg-brand-primary border-t border-brand-gold/15 py-16 px-6 md:px-12 overflow-hidden">
+    <footer className="relative bg-brand-primary border-t border-brand-gold/15 py-6 md:py-12 px-6 md:px-12 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-[0.015] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-brand-gold/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-8 border-b border-brand-gold/10">
           
           {/* Logo Branding column */}
           <div className="md:col-span-4 flex flex-col items-start">
@@ -33,7 +51,7 @@ export default function Footer() {
               <span className="font-playfair text-2xl font-black text-gold-gradient tracking-widest uppercase">
                 Arabian
               </span>
-              <span className="font-montserrat text-xs font-bold text-brand-white tracking-[0.25em] uppercase mt-0.5">
+              <span className="font-montserrat text-[10px] font-bold text-brand-white tracking-[0.25em] uppercase mt-0.5">
                 Shawarma
               </span>
             </a>
@@ -129,51 +147,184 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Newsletter subscription column */}
-          <div className="md:col-span-4 flex flex-col items-start">
+          {/* Feedback Trigger Column */}
+          <div className="md:col-span-4 flex flex-col items-start w-full">
             <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-gold mb-4">
-              Newsletter
+              Guest Feedback
             </h4>
             <p className="font-poppins text-brand-muted text-xs leading-relaxed mb-4">
-              Subscribe to unlock special rewards, discounts, and secret menu invitations.
+              We value your dining experience. Tap below to share a review in our journal.
             </p>
             
-            <form onSubmit={handleSubscribe} className="relative w-full max-w-sm flex">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={subscribed ? 'Subscribed successfully!' : 'Your email address'}
-                disabled={subscribed}
-                className={`w-full bg-brand-secondary border border-brand-gold/15 rounded-full px-5 py-3.5 pr-14 font-poppins text-xs focus:outline-none focus:border-brand-gold transition-all ${
-                  subscribed ? 'text-brand-gold border-brand-gold' : 'text-brand-white'
-                }`}
-              />
-              <button
-                type="submit"
-                disabled={subscribed}
-                className="absolute right-1.5 top-1.5 w-11 h-11 rounded-full bg-brand-gold text-brand-primary flex items-center justify-center hover:bg-brand-cream active:scale-95 transition-all cursor-pointer"
-                aria-label="Subscribe email"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-6 py-3 bg-gold-gradient text-brand-primary font-montserrat text-[10px] font-bold tracking-widest uppercase rounded-xl hover:shadow-[0_4px_15px_rgba(212,164,77,0.3)] active:scale-[0.98] transition-all cursor-pointer shadow-md select-none flex items-center gap-2"
+            >
+              <MessageSquareQuote className="w-3.5 h-3.5" />
+              Write A Review
+            </button>
           </div>
 
         </div>
 
         {/* Bottom copyright details */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6">
           <span className="font-poppins text-[10px] text-brand-muted">
             &copy; {new Date().getFullYear()} Arabian Shawarma. All rights reserved.
           </span>
-          <span className="font-poppins text-[10px] text-brand-muted flex items-center gap-1.5">
-            Designed with <span className="text-red-500 animate-pulse">&hearts;</span> for luxury fine dining.
+          <span className="font-poppins text-[10px] text-brand-muted">
+            Developed by{' '}
+            <a
+              href="https://explorush.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-gold hover:text-brand-cream hover:underline transition-all"
+            >
+              explorush.in
+            </a>
           </span>
         </div>
 
       </div>
+
+      {/* Interactive Popup Modal Feedback Form */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop Blur overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            {/* Modal Card Panel */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-md bg-[#211611]/95 border border-brand-gold/30 rounded-3xl p-6 sm:p-8 z-10 shadow-2xl flex flex-col"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 z-30 p-2 rounded-full bg-brand-primary/80 border border-brand-gold/20 hover:border-brand-gold text-brand-gold hover:text-brand-white transition-all shadow-md active:scale-95 select-none cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Header Title */}
+              <div className="text-center mb-6">
+                <div className="flex justify-center mb-2">
+                  <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="opacity-30">
+                    <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="#D4A44D" strokeWidth="1" />
+                    <circle cx="20" cy="6" r="2" fill="#D4A44D" />
+                  </svg>
+                </div>
+                <h3 className="font-playfair text-2xl font-black text-brand-white uppercase tracking-wider">
+                  Guest Journal
+                </h3>
+                <p className="font-montserrat text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">
+                  Share Your Experience
+                </p>
+              </div>
+
+              {/* Form container */}
+              <form onSubmit={handleSubmitFeedback} className="flex flex-col">
+                <div className="mb-4">
+                  <label className="font-montserrat text-[9px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your name"
+                    disabled={submitted}
+                    className="w-full bg-brand-secondary border border-brand-gold/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brand-gold text-brand-white transition-colors"
+                  />
+                </div>
+
+                {/* Star rating selector */}
+                <div className="mb-4">
+                  <label className="font-montserrat text-[9px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                    Diner Rating
+                  </label>
+                  <div className="flex gap-2 items-center bg-brand-secondary border border-brand-gold/15 rounded-xl px-4 py-2.5">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        type="button"
+                        key={star}
+                        onClick={() => setRating(star)}
+                        className="cursor-pointer transition-transform active:scale-90"
+                        aria-label={`Rate ${star} Stars`}
+                      >
+                        <Star
+                          className={`w-5 h-5 transition-colors ${
+                            star <= rating ? 'fill-brand-gold stroke-brand-gold' : 'stroke-brand-cream/30 fill-transparent'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                    <span className="font-montserrat text-[10px] font-bold text-brand-gold ml-2 uppercase">
+                      {rating} / 5 Stars
+                    </span>
+                  </div>
+                </div>
+
+                {/* Feedback Comment */}
+                <div className="mb-6">
+                  <label className="font-montserrat text-[9px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                    Your Review
+                  </label>
+                  <textarea
+                    rows={3}
+                    required
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder={submitted ? 'Feedback submitted successfully! Thank you ❤️' : 'How was the food, flavor, and delivery?'}
+                    disabled={submitted}
+                    className="w-full bg-brand-secondary border border-brand-gold/15 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brand-gold text-brand-white resize-none transition-colors"
+                  />
+                </div>
+
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  disabled={submitted}
+                  className="w-full bg-gold-gradient text-brand-primary font-montserrat text-xs font-bold tracking-widest uppercase py-4 rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer shadow-md select-none disabled:opacity-50"
+                >
+                  <AnimatePresence mode="wait">
+                    {submitted ? (
+                      <motion.span
+                        key="submitted"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                      >
+                        Submitted Successfully!
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="submit"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                      >
+                        Submit Feedback
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
