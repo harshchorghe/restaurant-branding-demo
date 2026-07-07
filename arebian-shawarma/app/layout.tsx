@@ -42,7 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${poppins.variable} ${montserrat.variable} w-full h-full antialiased`}
     >
-      <body className="w-full min-h-full flex flex-col bg-brand-primary text-brand-white font-sans selection:bg-brand-gold selection:text-brand-primary">
+      <body className="w-full min-h-full flex flex-col bg-bg-primary text-text-primary font-sans selection:bg-brass-primary selection:text-bg-primary">
         <SmoothScroll>
           {children}
         </SmoothScroll>

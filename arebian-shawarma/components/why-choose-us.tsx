@@ -32,10 +32,10 @@ const FEATURES = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-8 md:py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section className="relative py-8 md:py-24 bg-bg-primary px-6 md:px-12 overflow-hidden">
       {/* Decorative Arabic geometric star background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.015] pointer-events-none select-none drift-medium">
-        <svg viewBox="0 0 100 100" fill="none" stroke="#D4A44D" strokeWidth="0.3">
+        <svg viewBox="0 0 100 100" fill="none" stroke="var(--color-brass-primary)" strokeWidth="0.3">
           <circle cx="50" cy="50" r="45" />
           <polygon points="50,5 95,50 50,95 5,50" />
           <rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)" />
@@ -47,14 +47,14 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brass-primary uppercase mb-2 md:mb-3">
             Our Quality
           </span>
-          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-text-primary uppercase">
             Why Choose <span className="text-gold-gradient">Us</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
-          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brass-primary mt-3 md:mt-4" />
+          <p className="font-poppins text-text-secondary text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             Crafting premium street food with fine-dining aesthetics, organic spices, and swift service.
           </p>
         </div>
@@ -70,22 +70,22 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-                className="glass-card-cream rounded-2xl md:rounded-3xl p-4 md:p-8 transition-all duration-300 group"
+                className="glass-card-cream glass-card-cream-hover rounded-2xl md:rounded-3xl p-4 md:p-8 group"
               >
                 {/* Icon Container */}
-                <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center mb-3 md:mb-6 group-hover:bg-brand-gold transition-colors duration-300">
+                <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-bg-primary/10 border border-border flex items-center justify-center mb-3 md:mb-6 group-hover:bg-brass-primary transition-colors duration-300">
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: 10 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 10 }}
                   >
-                    <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-brand-gold group-hover:text-brand-primary transition-colors duration-300" />
+                    <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-brass-primary group-hover:text-bg-primary transition-colors duration-300" />
                   </motion.div>
                 </div>
 
-                <h3 className="font-playfair text-xs sm:text-base md:text-lg font-bold text-brand-primary group-hover:text-brand-gold transition-colors duration-300 mb-1.5 md:mb-3">
+                <h3 className="font-playfair text-xs sm:text-base md:text-lg font-bold text-bg-primary group-hover:text-brass-secondary transition-colors duration-300 mb-1.5 md:mb-3">
                   {item.title}
                 </h3>
-                <p className="font-poppins text-brand-secondary/90 text-[10px] md:text-xs leading-relaxed">
+                <p className="font-poppins text-bg-elevated/90 text-[10px] md:text-xs leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>

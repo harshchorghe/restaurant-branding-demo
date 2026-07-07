@@ -31,20 +31,20 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative py-8 md:py-24 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section className="relative py-8 md:py-24 bg-bg-secondary px-6 md:px-12 overflow-hidden">
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-brand-gold/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-brass-primary/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto z-10 relative">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brass-primary uppercase mb-2 md:mb-3">
             Got Questions?
           </span>
-          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-text-primary uppercase">
             Frequently Asked <span className="text-gold-gradient">FAQs</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
+          <div className="w-16 h-[2px] bg-brass-primary mt-3 md:mt-4" />
         </div>
 
         {/* FAQ Accordion List */}
@@ -54,19 +54,19 @@ export default function FAQ() {
             return (
               <div
                 key={idx}
-                className="glass-card rounded-2xl overflow-hidden border border-brand-gold/10 hover:border-brand-gold/25 transition-colors duration-300"
+                className="glass-card-cream rounded-2xl overflow-hidden border border-brass-secondary/20 hover:border-brass-secondary/50 transition-colors duration-300"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
                   className="w-full flex items-center justify-between p-6 text-left cursor-pointer group select-none"
                 >
                   <div className="flex items-center gap-4">
-                    <HelpCircle className="w-5 h-5 text-brand-gold shrink-0" />
-                    <span className="font-playfair text-base sm:text-lg font-bold text-brand-white group-hover:text-brand-gold transition-colors duration-300">
+                    <HelpCircle className="w-5 h-5 text-brass-secondary shrink-0" />
+                    <span className="font-playfair text-base sm:text-lg font-bold text-bg-primary group-hover:text-brass-secondary transition-colors duration-300">
                       {faq.question}
                     </span>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-brand-primary border border-brand-gold/25 flex items-center justify-center text-brand-gold shrink-0 group-hover:bg-brand-gold group-hover:text-brand-primary transition-all duration-300">
+                  <div className="w-8 h-8 rounded-full bg-brass-primary/10 border border-brass-secondary/30 flex items-center justify-center text-brass-secondary shrink-0 group-hover:bg-brass-primary group-hover:text-bg-primary transition-all duration-300">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
@@ -79,8 +79,8 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-6 pb-6 pt-0 border-t border-brand-gold/5 mt-1">
-                        <p className="font-poppins text-brand-muted text-xs sm:text-sm leading-relaxed pt-4">
+                      <div className="px-6 pb-6 pt-0 border-t border-brass-secondary/20 mt-1">
+                        <p className="font-poppins text-bg-elevated text-xs sm:text-sm leading-relaxed pt-4">
                           {faq.answer}
                         </p>
                       </div>

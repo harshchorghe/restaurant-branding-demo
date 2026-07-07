@@ -20,34 +20,34 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-8 md:py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="contact" className="relative py-8 md:py-24 bg-bg-primary px-6 md:px-12 overflow-hidden">
       {/* Glow effect */}
-      <div className="absolute bottom-1/3 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[400px] h-[400px] bg-brass-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brass-primary uppercase mb-2 md:mb-3">
             Visit Us
           </span>
-          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-text-primary uppercase">
             Get In <span className="text-gold-gradient">Touch</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
+          <div className="w-16 h-[2px] bg-brass-primary mt-3 md:mt-4" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
           {/* Left Side: Contact Form Card */}
           <div className="lg:col-span-6">
-            <div className="glass-card rounded-3xl p-6 md:p-8 border-brand-gold/15 h-full">
-              <h3 className="font-playfair text-lg md:text-xl font-bold text-brand-white mb-4 md:mb-6 uppercase tracking-wider">
+            <div className="glass-card-cream rounded-3xl p-6 md:p-8 h-full">
+              <h3 className="font-playfair text-lg md:text-xl font-bold text-bg-primary mb-4 md:mb-6 uppercase tracking-wider">
                 Send Us A Message
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-bg-elevated block mb-2">
                     Your Name
                   </label>
                   <input
@@ -55,13 +55,13 @@ export default function Contact() {
                     required
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    className="w-full bg-brand-primary/50 border border-brand-gold/15 rounded-xl px-4 py-3.5 font-poppins text-sm text-brand-white focus:outline-none focus:border-brand-gold transition-colors"
+                    className="w-full bg-white/60 border border-brass-secondary/30 rounded-xl px-4 py-3.5 font-poppins text-sm text-bg-primary focus:outline-none focus:border-brass-primary transition-colors placeholder:text-bg-elevated/50"
                     placeholder="Enter name"
                   />
                 </div>
 
                 <div>
-                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-bg-elevated block mb-2">
                     Email Address
                   </label>
                   <input
@@ -69,13 +69,13 @@ export default function Contact() {
                     required
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                    className="w-full bg-brand-primary/50 border border-brand-gold/15 rounded-xl px-4 py-3.5 font-poppins text-sm text-brand-white focus:outline-none focus:border-brand-gold transition-colors"
+                    className="w-full bg-white/60 border border-brass-secondary/30 rounded-xl px-4 py-3.5 font-poppins text-sm text-bg-primary focus:outline-none focus:border-brass-primary transition-colors placeholder:text-bg-elevated/50"
                     placeholder="name@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream block mb-2">
+                  <label className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-bg-elevated block mb-2">
                     How Can We Help?
                   </label>
                   <textarea
@@ -83,14 +83,14 @@ export default function Contact() {
                     required
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-brand-primary/50 border border-brand-gold/15 rounded-xl px-4 py-3.5 font-poppins text-sm text-brand-white focus:outline-none focus:border-brand-gold transition-colors resize-none"
+                    className="w-full bg-white/60 border border-brass-secondary/30 rounded-xl px-4 py-3.5 font-poppins text-sm text-bg-primary focus:outline-none focus:border-brass-primary transition-colors resize-none placeholder:text-bg-elevated/50"
                     placeholder="Your message details..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gold-gradient text-brand-primary font-montserrat text-xs font-bold tracking-widest uppercase py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(212,164,77,0.2)] active:scale-95 transition-all cursor-pointer select-none"
+                  className="w-full btn-primary font-montserrat text-xs font-bold tracking-widest uppercase py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(196,154,108,0.2)] active:scale-95 transition-all cursor-pointer select-none"
                 >
                   <AnimatePresence mode="wait">
                     {submitted ? (
@@ -126,56 +126,56 @@ export default function Contact() {
             {/* Contacts Grid (2x2 on Mobile and Desktop) */}
             <div className="grid grid-cols-2 gap-4 md:gap-6">
               <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0 animate-pulse">
+                <div className="w-10 h-10 rounded-xl bg-bg-primary/10 border border-border flex items-center justify-center text-brass-primary shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Phone</h4>
-                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">+91 99999 99999</span>
-                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Toll free ordering</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-bg-elevated/80">Phone</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-bg-primary block mt-1">+91 99999 99999</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-bg-elevated/70 block mt-0.5">Toll free ordering</span>
                 </div>
               </div>
 
               <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-bg-primary/10 border border-border flex items-center justify-center text-brass-primary shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Email</h4>
-                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">hello@arabian.com</span>
-                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Support & Catering</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-bg-elevated/80">Email</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-bg-primary block mt-1">hello@arabian.com</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-bg-elevated/70 block mt-0.5">Support & Catering</span>
                 </div>
               </div>
 
               <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-bg-primary/10 border border-border flex items-center justify-center text-brass-primary shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Location</h4>
-                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">Vasai West, Vasai-Virar</span>
-                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Maharashtra 401207</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-bg-elevated/80">Location</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-bg-primary block mt-1">Vasai West, Vasai-Virar</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-bg-elevated/70 block mt-0.5">Maharashtra 401207</span>
                 </div>
               </div>
 
               <div className="glass-card-cream rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-bg-primary/10 border border-border flex items-center justify-center text-brass-primary shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-brand-secondary/80">Hours</h4>
-                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-brand-primary block mt-1">12:00 PM - 11:30 PM</span>
-                  <span className="font-poppins text-[8px] sm:text-[10px] text-brand-secondary/70 block mt-0.5">Fri - Sat till 1:00 AM</span>
+                  <h4 className="font-montserrat text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-bg-elevated/80">Hours</h4>
+                  <span className="font-poppins text-[10px] sm:text-xs font-bold text-bg-primary block mt-1">12:00 PM - 11:30 PM</span>
+                  <span className="font-poppins text-[8px] sm:text-[10px] text-bg-elevated/70 block mt-0.5">Fri - Sat till 1:00 AM</span>
                 </div>
               </div>
             </div>
 
             {/* Google Map Mockup */}
-            <div className="glass-card rounded-3xl p-4 border-brand-gold/15 flex-1 relative overflow-hidden min-h-[220px] flex items-center justify-center">
+            <div className="glass-card rounded-3xl p-4 border-border flex-1 relative overflow-hidden min-h-[220px] flex items-center justify-center">
               
               {/* Custom styled vector dark map */}
-              <div className="absolute inset-0 z-0 bg-[#211611] opacity-75">
-                <svg className="w-full h-full opacity-30" viewBox="0 0 400 200" fill="none" stroke="#D4A44D" strokeWidth="0.5">
+              <div className="absolute inset-0 z-0 bg-[#18130F] opacity-75">
+                <svg className="w-full h-full opacity-30" viewBox="0 0 400 200" fill="none" stroke="var(--color-brass-primary)" strokeWidth="0.5">
                   {/* Grid roads */}
                   <line x1="20" y1="0" x2="20" y2="200" />
                   <line x1="120" y1="0" x2="120" y2="200" strokeWidth="1" />
@@ -197,24 +197,24 @@ export default function Contact() {
               <div className="relative z-10 flex flex-col items-center justify-center text-center">
                 {/* Ping rings */}
                 <div className="relative flex items-center justify-center mb-3">
-                  <div className="absolute w-8 h-8 rounded-full bg-brand-gold/30 animate-ping" />
-                  <div className="absolute w-12 h-12 rounded-full bg-brand-gold/10 animate-pulse" />
-                  <div className="w-6 h-6 rounded-full bg-brand-gold flex items-center justify-center shadow-lg border border-brand-primary">
-                    <MapPin className="w-3.5 h-3.5 text-brand-primary fill-brand-primary" />
+                  <div className="absolute w-8 h-8 rounded-full bg-brass-primary/30 animate-ping" />
+                  <div className="absolute w-12 h-12 rounded-full bg-brass-primary/10 animate-pulse" />
+                  <div className="w-6 h-6 rounded-full bg-brass-primary flex items-center justify-center shadow-lg border border-bg-primary">
+                    <MapPin className="w-3.5 h-3.5 text-bg-primary fill-bg-primary" />
                   </div>
                 </div>
                 
-                <h4 className="font-playfair text-sm font-bold text-brand-white uppercase tracking-wider text-center max-w-[200px]">
+                <h4 className="font-playfair text-sm font-bold text-text-primary uppercase tracking-wider text-center max-w-[200px]">
                   Vasai West Shop
                 </h4>
-                <p className="font-poppins text-[10px] text-brand-cream/80 uppercase tracking-widest mt-1 text-center max-w-[200px]">
+                <p className="font-poppins text-[10px] text-text-secondary/80 uppercase tracking-widest mt-1 text-center max-w-[200px]">
                   Tamtalao, Vasai-Virar
                 </p>
                 <a
                   href="https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KStnYwvsr-c7MYKaS8_OHp3R&daddr=shop+no-6,+Kalpavruksha+CHS,+Tamtalao,+Mulgaon,+District:,+Vasai+West,+Palghar,+Vasai-Virar,+Maharashtra+401207"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 px-4 py-2 rounded-full border border-brand-gold/40 text-brand-gold font-montserrat text-[9px] font-bold tracking-widest uppercase hover:bg-brand-gold hover:text-brand-primary transition-colors backdrop-blur-md"
+                  className="mt-4 px-4 py-2 rounded-full border border-brass-primary/40 text-brass-primary font-montserrat text-[9px] font-bold tracking-widest uppercase hover:bg-brass-primary hover:text-bg-primary transition-colors backdrop-blur-md"
                 >
                   Open in Google Maps
                 </a>

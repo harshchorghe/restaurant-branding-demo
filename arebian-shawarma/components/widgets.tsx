@@ -10,7 +10,7 @@ export function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX: scrollYProgress }}
-      className="fixed top-0 left-0 right-0 h-[3px] bg-brand-gold z-[999] origin-left"
+      className="fixed top-0 left-0 right-0 h-[3px] bg-brass-primary z-[999] origin-left"
     />
   );
 }
@@ -40,7 +40,7 @@ export function GlowCursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-[300px] h-[300px] rounded-full bg-brand-gold/5 blur-[100px] pointer-events-none z-[9998] hidden md:block will-change-transform"
+      className="fixed top-0 left-0 w-[300px] h-[300px] rounded-full bg-brass-primary/5 blur-[100px] pointer-events-none z-[9998] hidden md:block will-change-transform"
       style={{
         transform: 'translate3d(-400px, -400px, 0)',
         transition: 'transform 0.15s cubic-bezier(0.25, 1, 0.5, 1)',
@@ -61,7 +61,7 @@ export function WhatsAppFloat() {
       transition={{ delay: 5, type: 'spring', stiffness: 260, damping: 20 }}
       whileHover={{ scale: 1.1, y: -4 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-[0_4px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.5)] transition-shadow"
+      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full btn-whatsapp shadow-lg transition-shadow hover:shadow-2xl"
       aria-label="Order on WhatsApp"
     >
       <svg
@@ -99,14 +99,14 @@ export function StickyOrderMobile() {
           transition={{ type: 'spring', stiffness: 260, damping: 25 }}
           className="fixed bottom-0 left-0 right-0 z-40 p-4 md:hidden"
         >
-          <div className="glass-card flex items-center justify-between p-3 rounded-2xl border-brand-gold/30 shadow-[0_-5px_20px_rgba(0,0,0,0.4)]">
+          <div className="glass-card flex items-center justify-between p-3 rounded-2xl border-border-strong shadow-deep">
             <div className="flex flex-col pl-2">
-              <span className="text-[10px] uppercase tracking-widest text-brand-cream font-medium">Craving shawarma?</span>
-              <span className="text-sm font-bold text-brand-white">Fresh & Hot Grill</span>
+              <span className="text-[10px] uppercase tracking-widest text-text-secondary font-medium">Craving shawarma?</span>
+              <span className="text-sm font-bold text-text-primary">Fresh & Hot Grill</span>
             </div>
             <a
               href="#contact"
-              className="bg-gold-gradient text-brand-primary text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-xl flex items-center gap-2 font-montserrat shadow-lg hover:brightness-95 active:scale-95 transition-all"
+              className="btn-primary text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-xl flex items-center gap-2 font-montserrat shadow-lg active:scale-95 transition-all"
             >
               <ShoppingBag className="w-4 h-4" />
               Order Now

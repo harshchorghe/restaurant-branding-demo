@@ -82,9 +82,9 @@ const STATS = [
 
 export default function Statistics() {
   return (
-    <section className="relative py-6 md:py-16 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section className="relative py-6 md:py-16 bg-bg-secondary px-6 md:px-12 overflow-hidden">
       {/* Background soft glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-brass-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -100,18 +100,18 @@ export default function Statistics() {
                 className="glass-card-cream rounded-3xl p-6 md:p-8 text-center flex flex-col items-center"
               >
                 {/* Icon wrapper */}
-                <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 border border-brand-gold/20 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-brand-gold" />
+                <div className="w-12 h-12 rounded-2xl bg-bg-primary/10 border border-border flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-brass-primary" />
                 </div>
 
                 {/* Counter */}
-                <div className="font-playfair text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight flex items-baseline">
+                <div className="font-playfair text-3xl md:text-4xl font-extrabold text-bg-primary tracking-tight flex items-baseline">
                   <Counter end={stat.endValue} decimals={stat.decimals} />
-                  <span className="text-brand-gold ml-0.5">{stat.suffix}</span>
+                  <span className="text-brass-primary ml-0.5">{stat.suffix}</span>
                 </div>
 
                 {/* Label */}
-                <p className="font-montserrat text-[10px] md:text-xs font-semibold text-brand-secondary/85 uppercase tracking-widest mt-3">
+                <p className="font-montserrat text-[10px] md:text-[11px] font-semibold text-bg-elevated/85 uppercase tracking-widest mt-3">
                   {stat.title}
                 </p>
               </motion.div>

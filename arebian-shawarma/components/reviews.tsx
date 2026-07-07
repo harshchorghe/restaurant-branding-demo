@@ -90,11 +90,11 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
   };
 
   return (
-    <section id="reviews" className="relative py-8 md:py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="reviews" className="relative py-8 md:py-24 bg-bg-primary px-6 md:px-12 overflow-hidden">
       {/* Background patterns */}
-      <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(var(--color-brass-primary)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
       <div className="absolute top-1/4 left-10 w-96 h-96 opacity-[0.015] pointer-events-none select-none drift-slow">
-        <svg viewBox="0 0 100 100" fill="none" stroke="#D4A44D" strokeWidth="0.5">
+        <svg viewBox="0 0 100 100" fill="none" stroke="var(--color-brass-primary)" strokeWidth="0.5">
           <circle cx="50" cy="50" r="40" />
           <polygon points="50,10 90,50 50,90 10,50" transform="rotate(45 50 50)" />
           <rect x="25" y="25" width="50" height="50" transform="rotate(15 50 50)" />
@@ -104,14 +104,14 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brass-primary uppercase mb-2 md:mb-3">
             Guest Journal
           </span>
-          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-text-primary uppercase">
             Loved By <span className="text-gold-gradient">Food Lovers </span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
-          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brass-primary mt-3 md:mt-4" />
+          <p className="font-poppins text-text-secondary text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             Do not just take our word for it. Here is what our premium diners have to say about their experience.
           </p>
         </div>
@@ -124,12 +124,11 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
 
               if (isHidden) return null;
 
-              // Compute custom offset position
+              // Compute circular animation position offset
               let xPosition = '0%';
               if (isLeft) xPosition = '-70%';
               if (isRight) xPosition = '70%';
 
-              // For mobile, squeeze the side cards out of bounds or overlap
               return (
                 <motion.div
                   key={review.id}
@@ -149,36 +148,36 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
                   }}
                   className={`w-full max-w-[245px] sm:max-w-[420px] rounded-3xl p-5 md:p-8 flex flex-col justify-between h-[240px] md:h-[280px] select-none transition-all ${
                     isActive
-                      ? 'glass-card-cream border-brand-gold shadow-[0_15px_40px_rgba(43,27,18,0.1)]'
-                      : 'glass-card-cream opacity-50 border border-brand-gold/5'
+                      ? 'glass-card-cream border-brass-primary shadow-[0_15px_40px_rgba(43,27,18,0.1)]'
+                      : 'glass-card-cream opacity-50 border border-border/50'
                   }`}
                 >
                   {/* Card Header Quote */}
                   <div className="flex justify-between items-start">
                     <div className="flex gap-1">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 md:w-3.5 md:h-3.5 fill-brand-gold stroke-brand-gold" />
+                        <Star key={i} className="w-3 h-3 md:w-3.5 md:h-3.5 fill-brass-primary stroke-brass-primary" />
                       ))}
                     </div>
-                    <Quote className="w-6 h-6 md:w-8 md:h-8 text-brand-gold/30" />
+                    <Quote className="w-6 h-6 md:w-8 md:h-8 text-brass-primary/30" />
                   </div>
 
                   {/* Body Review Text */}
-                  <p className="font-poppins text-brand-primary text-[10px] md:text-sm italic leading-relaxed mt-2 md:mt-4 flex-1">
+                  <p className="font-poppins text-bg-primary text-[10px] md:text-sm italic leading-relaxed mt-2 md:mt-4 flex-1">
                     "{review.text}"
                   </p>
 
                   {/* Guest Info */}
-                  <div className="border-t border-brand-gold/15 pt-2.5 mt-2.5 md:pt-4 md:mt-4 flex items-center justify-between">
+                  <div className="border-t border-bg-primary/10 pt-2.5 mt-2.5 md:pt-4 md:mt-4 flex items-center justify-between">
                     <div>
-                      <h4 className="font-playfair text-xs md:text-base font-bold text-brand-primary">
+                      <h4 className="font-playfair text-xs md:text-base font-bold text-bg-primary">
                         {review.name}
                       </h4>
-                      <span className="font-montserrat text-[8px] md:text-[9px] tracking-wider text-brand-secondary/80 uppercase">
+                      <span className="font-montserrat text-[8px] md:text-[9px] tracking-wider text-bg-elevated/80 uppercase">
                         {review.role}
                       </span>
                     </div>
-                    <span className="bg-brand-gold/10 border border-brand-gold/30 px-2 py-0.5 rounded text-[8px] text-brand-gold tracking-widest font-montserrat uppercase font-semibold">
+                    <span className="bg-brass-primary/10 border border-brass-primary/30 px-2 py-0.5 rounded text-[8px] text-brass-primary tracking-widest font-montserrat uppercase font-semibold">
                       Verified
                     </span>
                   </div>
@@ -191,7 +190,7 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
           <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-6 z-40">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full bg-brand-secondary border border-brand-gold/20 flex items-center justify-center text-brand-white hover:text-brand-gold hover:border-brand-gold/50 active:scale-90 transition-all cursor-pointer"
+              className="w-10 h-10 rounded-full bg-bg-secondary border border-border flex items-center justify-center text-text-primary hover:text-brass-primary hover:border-border-strong active:scale-90 transition-all cursor-pointer"
               aria-label="Previous review"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -207,7 +206,7 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
                     setActiveIndex(index);
                   }}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? 'w-6 bg-brand-gold' : 'w-1.5 bg-brand-cream/30'
+                    index === activeIndex ? 'w-6 bg-brass-primary' : 'w-1.5 bg-brass-secondary/30'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -216,7 +215,7 @@ export default function Reviews({ reviews = REVIEWS }: ReviewsProps) {
 
             <button
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full bg-brand-secondary border border-brand-gold/20 flex items-center justify-center text-brand-white hover:text-brand-gold hover:border-brand-gold/50 active:scale-90 transition-all cursor-pointer"
+              className="w-10 h-10 rounded-full bg-bg-secondary border border-border flex items-center justify-center text-text-primary hover:text-brass-primary hover:border-border-strong active:scale-90 transition-all cursor-pointer"
               aria-label="Next review"
             >
               <ChevronRight className="w-5 h-5" />

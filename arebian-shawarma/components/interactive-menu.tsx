@@ -155,22 +155,22 @@ export default function InteractiveMenu() {
   const currentSpread = SPREADS[activeSpread];
 
   return (
-    <section id="menu" className="relative py-8 md:py-24 bg-brand-secondary/20 px-6 md:px-12 overflow-hidden">
+    <section id="menu" className="relative py-8 md:py-24 bg-bg-secondary px-6 md:px-12 overflow-hidden">
       {/* Background glowing elements */}
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-brass-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brass-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-16">
-          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brand-gold uppercase mb-2 md:mb-3">
+          <span className="font-montserrat text-[10px] font-bold tracking-[0.3em] text-brass-primary uppercase mb-2 md:mb-3">
             Explore Flavors
           </span>
-          <h2 className="font-playfair text-2xl md:text-5xl font-black text-brand-white uppercase">
+          <h2 className="font-playfair text-2xl md:text-5xl font-black text-text-primary uppercase">
             Signature <span className="text-gold-gradient">Menu</span>
           </h2>
-          <div className="w-16 h-[2px] bg-brand-gold mt-3 md:mt-4" />
-          <p className="font-poppins text-brand-muted text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
+          <div className="w-16 h-[2px] bg-brass-primary mt-3 md:mt-4" />
+          <p className="font-poppins text-text-secondary text-xs md:text-base max-w-lg mt-3 md:mt-4 leading-relaxed">
             Flip through our handcrafted royal restaurant menu book to discover authentic Middle Eastern flavors.
           </p>
         </div>
@@ -185,8 +185,8 @@ export default function InteractiveMenu() {
                 onClick={() => handleSpreadChange(spread.id)}
                 className={`relative px-3.5 sm:px-6 py-2.5 md:py-4 font-montserrat text-[9px] md:text-xs font-bold tracking-widest uppercase cursor-pointer select-none transition-all duration-300 ${
                   isActive 
-                    ? 'text-brand-primary bg-gold-gradient shadow-lg translate-y-1' 
-                    : 'text-brand-gold bg-[#3B2417] hover:bg-[#4d3020] border border-brand-gold/20 hover:border-brand-gold/40'
+                    ? 'text-bg-primary bg-gold-gradient shadow-lg translate-y-1' 
+                    : 'text-brass-primary bg-bg-elevated hover:bg-bg-card border border-border hover:border-border-strong'
                 } rounded-b-2xl rounded-t-sm shadow-md flex items-center justify-center`}
                 style={{
                   clipPath: 'polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%)',
@@ -200,15 +200,15 @@ export default function InteractiveMenu() {
         </div>
 
         {/* Royal flat-open menu book container */}
-        <div className="relative max-w-4xl mx-auto bg-[#3b2417] p-2.5 sm:p-5 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border-4 border-[#25150d] overflow-hidden">
+        <div className="relative max-w-4xl mx-auto bg-bg-elevated p-2.5 sm:p-5 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border-4 border-bg-primary overflow-hidden">
           {/* Inner gold frame border */}
-          <div className="absolute inset-4 border border-[#D4A44D]/20 rounded-[1.5rem] md:rounded-[2rem] pointer-events-none z-10" />
+          <div className="absolute inset-4 border border-brass-primary/20 rounded-[1.5rem] md:rounded-[2rem] pointer-events-none z-10" />
 
           {/* Golden cover corners ornaments */}
-          <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-brand-gold/30 rounded-tl-lg pointer-events-none z-10" />
-          <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-brand-gold/30 rounded-tr-lg pointer-events-none z-10" />
-          <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-brand-gold/30 rounded-bl-lg pointer-events-none z-10" />
-          <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-brand-gold/30 rounded-br-lg pointer-events-none z-10" />
+          <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-border-strong rounded-tl-lg pointer-events-none z-10" />
+          <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-border-strong rounded-tr-lg pointer-events-none z-10" />
+          <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-border-strong rounded-bl-lg pointer-events-none z-10" />
+          <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-border-strong rounded-br-lg pointer-events-none z-10" />
 
           {/* Book Sheets turning wrapper */}
           <AnimatePresence mode="wait">
@@ -219,19 +219,19 @@ export default function InteractiveMenu() {
               exit={{ opacity: 0, rotateY: direction === 1 ? -40 : 40, scale: 0.96 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
               style={{ transformOrigin: 'center center' }}
-              className="flex flex-col md:flex-row relative z-10 w-full rounded-2xl overflow-hidden shadow-2xl bg-[#FCF9F2] text-[#2B1B12] [perspective:1500px] transform-gpu"
+              className="flex flex-col md:flex-row relative z-10 w-full rounded-2xl overflow-hidden shadow-2xl bg-[#FCF9F2] text-bg-primary [perspective:1500px] transform-gpu"
             >
               {/* Vertical Crease shadow overlay (visible on desktop side-by-side spreads) */}
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-gradient-to-r from-black/10 via-black/25 to-transparent pointer-events-none z-20" />
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-black/40 pointer-events-none z-20" />
 
               {/* LEFT PAGE: Primary Category */}
-              <div className="w-full md:w-1/2 p-4 sm:p-10 flex flex-col justify-between min-h-[340px] md:min-h-[460px] relative border-b md:border-b-0 md:border-r border-brand-secondary/15">
+              <div className="w-full md:w-1/2 p-4 sm:p-10 flex flex-col justify-between min-h-[340px] md:min-h-[460px] relative border-b md:border-b-0 md:border-r border-border">
                 {/* Paper corners decoration */}
-                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-brand-gold/30 pointer-events-none" />
-                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-brand-gold/30 pointer-events-none" />
-                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-brand-gold/30 pointer-events-none" />
-                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-brand-gold/30 pointer-events-none" />
+                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-border-strong pointer-events-none" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-border-strong pointer-events-none" />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-border-strong pointer-events-none" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-border-strong pointer-events-none" />
 
                 {/* Page Contents */}
                 <div>
@@ -239,14 +239,14 @@ export default function InteractiveMenu() {
                     {/* Flourish */}
                     <div className="flex justify-center mb-1.5 md:mb-2">
                       <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="opacity-30">
-                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="#AD6C22" strokeWidth="1" />
-                        <circle cx="20" cy="6" r="2" fill="#D4A44D" />
+                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="var(--color-brass-secondary)" strokeWidth="1" />
+                        <circle cx="20" cy="6" r="2" fill="var(--color-brass-primary)" />
                       </svg>
                     </div>
-                    <h3 className="font-playfair text-lg md:text-2xl font-black text-brand-secondary uppercase tracking-wide">
+                    <h3 className="font-playfair text-lg md:text-2xl font-black text-bg-primary uppercase tracking-wide">
                       {currentSpread.leftPage.title}
                     </h3>
-                    <p className="font-montserrat text-[8px] md:text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">
+                    <p className="font-montserrat text-[8px] md:text-[9px] font-bold text-brass-primary uppercase tracking-[0.2em] mt-1">
                       {currentSpread.leftPage.subtitle}
                     </p>
                   </div>
@@ -260,23 +260,23 @@ export default function InteractiveMenu() {
                           const element = document.getElementById('contact');
                           if (element) element.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="group/item py-1.5 md:py-2.5 cursor-pointer rounded-lg hover:bg-brand-gold/5 px-2 transition-colors duration-200"
+                        className="group/item py-1.5 md:py-2.5 cursor-pointer rounded-lg hover:bg-brass-primary/5 px-2 transition-colors duration-200"
                       >
                         <div className="flex items-baseline gap-2">
-                          <h4 className="font-playfair text-[#3B2417] font-bold text-xs md:text-base group-hover/item:text-brand-gold transition-colors duration-200">
+                          <h4 className="font-playfair text-bg-elevated font-bold text-xs md:text-base group-hover/item:text-brass-primary transition-colors duration-200">
                             {item.name}
                           </h4>
-                          <span className="flex-1 border-b border-dotted border-[#3B2417]/25 min-w-[15px]"></span>
-                          <span className="font-montserrat text-[#3B2417] font-black text-xs md:text-base">
+                          <span className="flex-1 border-b border-dotted border-bg-elevated/25 min-w-[15px]"></span>
+                          <span className="font-montserrat text-bg-elevated font-black text-xs md:text-base">
                             {item.price}
                           </span>
                         </div>
                         <div className="flex justify-between items-center mt-1">
-                          <p className="font-poppins text-[#784013] text-[10px] md:text-[11px] leading-relaxed max-w-[85%]">
+                          <p className="font-poppins text-bg-primary/90 text-[10px] md:text-[11px] leading-relaxed max-w-[85%]">
                             {item.desc}
                           </p>
-                          <span className="text-[9px] md:text-[10px] text-brand-gold font-bold font-montserrat flex items-center gap-0.5 shrink-0">
-                            <Star className="w-2.5 h-2.5 fill-brand-gold stroke-brand-gold" />
+                          <span className="text-[9px] md:text-[10px] text-brass-primary font-bold font-montserrat flex items-center gap-0.5 shrink-0">
+                            <Star className="w-2.5 h-2.5 fill-brass-primary stroke-brass-primary" />
                             {item.rating}
                           </span>
                         </div>
@@ -286,11 +286,11 @@ export default function InteractiveMenu() {
                 </div>
 
                 {/* Page Footer */}
-                <div className="flex justify-between items-center mt-6 md:mt-8 pt-3 md:pt-4 border-t border-brand-secondary/10">
-                  <span className="font-montserrat text-[8px] font-bold text-brand-gold uppercase tracking-[0.2em]">
+                <div className="flex justify-between items-center mt-6 md:mt-8 pt-3 md:pt-4 border-t border-border">
+                  <span className="font-montserrat text-[8px] font-bold text-brass-primary uppercase tracking-[0.2em]">
                     Arabian Shawarma
                   </span>
-                  <span className="font-playfair text-xs font-bold text-[#784013]/60 italic">
+                  <span className="font-playfair text-xs font-bold text-bg-elevated/60 italic">
                     Page {activeSpread * 2 + 1}
                   </span>
                 </div>
@@ -299,10 +299,10 @@ export default function InteractiveMenu() {
               {/* RIGHT PAGE: Secondary Category */}
               <div className="w-full md:w-1/2 p-4 sm:p-10 flex flex-col justify-between min-h-[340px] md:min-h-[460px] relative">
                 {/* Paper corners decoration */}
-                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-brand-gold/30 pointer-events-none" />
-                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-brand-gold/30 pointer-events-none" />
-                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-brand-gold/30 pointer-events-none" />
-                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-brand-gold/30 pointer-events-none" />
+                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-border-strong pointer-events-none" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-border-strong pointer-events-none" />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-border-strong pointer-events-none" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-border-strong pointer-events-none" />
 
                 {/* Page Contents */}
                 <div>
@@ -310,14 +310,14 @@ export default function InteractiveMenu() {
                     {/* Flourish */}
                     <div className="flex justify-center mb-1.5 md:mb-2">
                       <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="opacity-30">
-                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="#AD6C22" strokeWidth="1" />
-                        <circle cx="20" cy="6" r="2" fill="#D4A44D" />
+                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="var(--color-brass-secondary)" strokeWidth="1" />
+                        <circle cx="20" cy="6" r="2" fill="var(--color-brass-primary)" />
                       </svg>
                     </div>
-                    <h3 className="font-playfair text-lg md:text-2xl font-black text-brand-secondary uppercase tracking-wide">
+                    <h3 className="font-playfair text-lg md:text-2xl font-black text-bg-primary uppercase tracking-wide">
                       {currentSpread.rightPage.title}
                     </h3>
-                    <p className="font-montserrat text-[8px] md:text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">
+                    <p className="font-montserrat text-[8px] md:text-[9px] font-bold text-brass-primary uppercase tracking-[0.2em] mt-1">
                       {currentSpread.rightPage.subtitle}
                     </p>
                   </div>
@@ -331,23 +331,23 @@ export default function InteractiveMenu() {
                           const element = document.getElementById('contact');
                           if (element) element.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="group/item py-1.5 md:py-2.5 cursor-pointer rounded-lg hover:bg-brand-gold/5 px-2 transition-colors duration-200"
+                        className="group/item py-1.5 md:py-2.5 cursor-pointer rounded-lg hover:bg-brass-primary/5 px-2 transition-colors duration-200"
                       >
                         <div className="flex items-baseline gap-2">
-                          <h4 className="font-playfair text-[#3B2417] font-bold text-xs md:text-base group-hover/item:text-brand-gold transition-colors duration-200">
+                          <h4 className="font-playfair text-bg-elevated font-bold text-xs md:text-base group-hover/item:text-brass-primary transition-colors duration-200">
                             {item.name}
                           </h4>
-                          <span className="flex-1 border-b border-dotted border-[#3B2417]/25 min-w-[15px]"></span>
-                          <span className="font-montserrat text-[#3B2417] font-black text-xs md:text-base">
+                          <span className="flex-1 border-b border-dotted border-bg-elevated/25 min-w-[15px]"></span>
+                          <span className="font-montserrat text-bg-elevated font-black text-xs md:text-base">
                             {item.price}
                           </span>
                         </div>
                         <div className="flex justify-between items-center mt-1">
-                          <p className="font-poppins text-[#784013] text-[10px] md:text-[11px] leading-relaxed max-w-[85%]">
+                          <p className="font-poppins text-bg-primary/90 text-[10px] md:text-[11px] leading-relaxed max-w-[85%]">
                             {item.desc}
                           </p>
-                          <span className="text-[9px] md:text-[10px] text-brand-gold font-bold font-montserrat flex items-center gap-0.5 shrink-0">
-                            <Star className="w-2.5 h-2.5 fill-brand-gold stroke-brand-gold" />
+                          <span className="text-[9px] md:text-[10px] text-brass-primary font-bold font-montserrat flex items-center gap-0.5 shrink-0">
+                            <Star className="w-2.5 h-2.5 fill-brass-primary stroke-brass-primary" />
                             {item.rating}
                           </span>
                         </div>
@@ -357,7 +357,7 @@ export default function InteractiveMenu() {
                 </div>
 
                 {/* Page Footer */}
-                <div className="flex justify-between items-center mt-6 md:mt-8 pt-3 md:pt-4 border-t border-brand-secondary/10">
+                <div className="flex justify-between items-center mt-6 md:mt-8 pt-3 md:pt-4 border-t border-border">
                   <button
                     onClick={() => {
                       const element = document.getElementById('contact');
@@ -365,12 +365,12 @@ export default function InteractiveMenu() {
                         element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className="font-montserrat text-[8px] font-bold text-brand-gold hover:text-brand-secondary uppercase tracking-[0.2em] flex items-center gap-1 transition-colors group/order"
+                    className="font-montserrat text-[8px] font-bold text-brass-primary hover:text-brass-secondary uppercase tracking-[0.2em] flex items-center gap-1 transition-colors group/order"
                   >
                     <span>Click Item to Order</span>
                     <ArrowRight className="w-2.5 h-2.5 transition-transform group-hover/order:translate-x-1" />
                   </button>
-                  <span className="font-playfair text-xs font-bold text-[#784013]/60 italic">
+                  <span className="font-playfair text-xs font-bold text-bg-elevated/60 italic">
                     Page {activeSpread * 2 + 2}
                   </span>
                 </div>
@@ -380,7 +380,7 @@ export default function InteractiveMenu() {
         </div>
 
         {/* Small gold sparkle reminder under the book */}
-        <div className="flex justify-center items-center gap-1.5 mt-6 md:mt-8 text-brand-gold/40 text-[9px] tracking-[0.25em] font-montserrat uppercase select-none pointer-events-none">
+        <div className="flex justify-center items-center gap-1.5 mt-6 md:mt-8 text-brass-primary/40 text-[9px] tracking-[0.25em] font-montserrat uppercase select-none pointer-events-none">
           <Sparkles className="w-3.5 h-3.5 animate-pulse" />
           <span>Charcoal Grilled • Organic Herbs</span>
         </div>

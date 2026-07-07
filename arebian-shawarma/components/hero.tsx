@@ -34,29 +34,29 @@ export default function Hero() {
       id="home"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[75vh] md:min-h-screen flex items-center justify-center bg-brand-primary overflow-hidden pt-20 pb-10 md:pt-20 md:pb-20 px-6 md:px-12"
+      className="relative min-h-[75vh] md:min-h-screen flex items-center justify-center bg-bg-primary overflow-hidden pt-20 pb-10 md:pt-20 md:pb-20 px-6 md:px-12"
     >
       {/* 1. Immersive Atmospheric Backdrop Background */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-secondary/80 via-brand-primary to-brand-primary" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-bg-elevated/70 via-bg-primary to-bg-primary" />
 
       {/* Decorative Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(var(--color-brass-primary)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       {/* Ambient Gold Light Backdrops */}
-      <div className="absolute top-1/4 left-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-brand-gold/10 rounded-full blur-[80px] md:blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[200px] md:w-[450px] h-[200px] md:h-[450px] bg-brand-gold/5 rounded-full blur-[80px] md:blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-brass-primary/10 rounded-full blur-[80px] md:blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[200px] md:w-[450px] h-[200px] md:h-[450px] bg-brass-primary/5 rounded-full blur-[80px] md:blur-[130px] pointer-events-none" />
 
       {/* 2. Floating Luxury Elements & Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         {/* Decorative Golden Star Ornament */}
         <div className="absolute top-28 left-[10%] opacity-25 select-none animate-spin-slow hidden md:block">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#D4A44D" />
+            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="var(--color-brass-primary)" />
           </svg>
         </div>
         <div className="absolute bottom-28 right-[10%] opacity-20 select-none animate-spin-slow hidden md:block">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#D4A44D" />
+            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="var(--color-brass-primary)" />
           </svg>
         </div>
 
@@ -68,7 +68,7 @@ export default function Hero() {
             rotate: [0, 360],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute bottom-1/4 left-1/4 w-3.5 h-3.5 bg-brand-gold/25 rounded-sm rotate-12 blur-[0.5px] hidden md:block"
+          className="absolute bottom-1/4 left-1/4 w-3.5 h-3.5 bg-brass-primary/25 rounded-sm rotate-12 blur-[0.5px] hidden md:block"
         />
         {/* Animated Spice Flake 2 */}
         <motion.div
@@ -78,7 +78,7 @@ export default function Hero() {
             rotate: [0, -360],
           }}
           transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
-          className="absolute bottom-1/3 right-12 w-4 h-4 bg-brand-cream/15 rounded-sm rotate-45 blur-[0.5px]"
+          className="absolute bottom-1/3 right-12 w-4 h-4 bg-text-secondary/15 rounded-sm rotate-45 blur-[0.5px]"
         />
         {/* Animated Spice Flake 3 */}
         <motion.div
@@ -88,7 +88,7 @@ export default function Hero() {
             rotate: [0, 180],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/4 right-1/3 w-2.5 h-2.5 bg-brand-gold/30 rounded-full"
+          className="absolute top-1/4 right-1/3 w-2.5 h-2.5 bg-brass-primary/30 rounded-full"
         />
       </div>
 
@@ -101,10 +101,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-brand-secondary border border-brand-gold/20 mb-4 md:mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-bg-secondary border border-border mb-4 md:mb-6"
           >
-            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-gold animate-pulse" />
-            <span className="font-montserrat text-[8px] md:text-[10px] tracking-[0.2em] font-semibold text-brand-cream uppercase">
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brass-primary animate-pulse" />
+            <span className="font-montserrat text-[8px] md:text-[10px] tracking-[0.2em] font-semibold text-text-secondary uppercase">
               Authentic Arabian Shawarma
             </span>
           </motion.div>
@@ -114,7 +114,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-playfair text-3xl sm:text-4xl md:text-7xl font-black text-brand-white leading-tight uppercase"
+            className="font-playfair text-3xl sm:text-4xl md:text-7xl font-black text-text-primary leading-tight uppercase"
           >
             Fresh. <br className="hidden md:block" />
             Juicy. <br className="hidden md:block" />
@@ -126,7 +126,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-poppins text-brand-muted text-xs md:text-lg max-w-lg mt-3 md:mt-6 leading-relaxed"
+            className="font-poppins text-text-secondary text-xs md:text-lg max-w-lg mt-3 md:mt-6 leading-relaxed"
           >
             Experience the rich, charcoal-grilled flavors of the Middle East made with secret organic spices, slow-roasted succulent meats, and freshly baked flatbread.
           </motion.p>
@@ -140,13 +140,13 @@ export default function Hero() {
           >
             <a
               href="#menu"
-              className="bg-gold-gradient text-brand-primary font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full shadow-[0_4px_15px_rgba(212,164,77,0.25)] hover:shadow-[0_4px_25px_rgba(212,164,77,0.45)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="btn-primary font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full shadow-[0_4px_15px_var(--color-glow-brass)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
             >
               Order Online
             </a>
             <a
               href="#menu"
-              className="border border-brand-gold/40 text-brand-gold hover:text-brand-primary hover:bg-brand-gold font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full flex items-center gap-2 transition-all backdrop-blur-sm"
+              className="btn-secondary font-montserrat text-[10px] md:text-xs font-bold tracking-widest uppercase px-6 py-3.5 md:px-8 md:py-4 rounded-full flex items-center gap-2 transition-all backdrop-blur-sm"
             >
               <Compass className="w-3.5 h-3.5" />
               Explore Menu
@@ -157,7 +157,7 @@ export default function Hero() {
         {/* Right Side: Interactive Floating Shawarma */}
         <div className="lg:col-span-6 flex justify-center items-center relative h-[260px] md:h-[500px]">
           {/* Subtle background circular glow behind image */}
-          <div className="absolute w-52 md:w-80 h-52 md:h-80 rounded-full bg-brand-gold/15 filter blur-[50px] md:blur-[60px]" />
+          <div className="absolute w-52 md:w-80 h-52 md:h-80 rounded-full bg-brass-primary/15 filter blur-[50px] md:blur-[60px]" />
 
           {/* Interactive Mouse Tilt Wrapper */}
           <motion.div
@@ -175,7 +175,7 @@ export default function Hero() {
               {[0, 1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-0.5 md:w-1 bg-brand-cream/15 rounded-full steam-particle"
+                  className="w-0.5 md:w-1 bg-text-secondary/15 rounded-full steam-particle"
                   style={{
                     height: `${16 + i * 6}px`,
                     animationDelay: `${i * 0.7}s`,
@@ -192,7 +192,7 @@ export default function Hero() {
               width={380}
               height={460}
               priority
-              className="object-contain w-[180px] h-[220px] md:w-[380px] md:h-[460px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_20px_rgba(212,164,77,0.15)] pointer-events-none select-none"
+              className="object-contain w-[180px] h-[220px] md:w-[380px] md:h-[460px] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] drop-shadow-[0_0_20px_rgba(196,160,107,0.15)] pointer-events-none select-none"
             />
           </motion.div>
         </div>
@@ -200,13 +200,13 @@ export default function Hero() {
 
       {/* Down Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
-        <span className="font-montserrat text-[9px] font-bold tracking-[0.35em] text-brand-cream/40 uppercase mb-2">Scroll</span>
+        <span className="font-montserrat text-[9px] font-bold tracking-[0.35em] text-text-secondary/40 uppercase mb-2">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-5 h-8 rounded-full border border-brand-gold/30 flex justify-center p-1"
+          className="w-5 h-8 rounded-full border border-border-strong flex justify-center p-1"
         >
-          <div className="w-1 h-2 bg-brand-gold rounded-full" />
+          <div className="w-1 h-2 bg-brass-primary rounded-full" />
         </motion.div>
       </div>
     </section>

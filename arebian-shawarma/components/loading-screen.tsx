@@ -51,10 +51,10 @@ export default function LoadingScreen() {
             opacity: 0,
             transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-brand-primary"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg-primary"
         >
           {/* Decorative background glow */}
-          <div className="absolute w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute w-[400px] h-[400px] bg-brass-primary/10 rounded-full blur-[100px] pointer-events-none" />
 
           {/* SVG Animated Shawarma Skewer */}
           <div className="relative mb-8 w-48 h-48 flex items-center justify-center">
@@ -75,7 +75,7 @@ export default function LoadingScreen() {
                     delay: i * 0.6,
                     ease: "easeInOut",
                   }}
-                  className="w-1.5 h-1.5 rounded-full bg-brand-cream/40"
+                  className="w-1.5 h-1.5 rounded-full bg-brass-secondary/40"
                 />
               ))}
             </div>
@@ -97,10 +97,10 @@ export default function LoadingScreen() {
                 viewBox="0 0 80 130"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="filter drop-shadow-[0_0_15px_rgba(212,164,77,0.3)]"
+                className="filter drop-shadow-[0_0_15px_rgba(196,154,108,0.3)]"
               >
                 {/* Central Spit Rod */}
-                <rect x="38" y="0" width="4" height="130" rx="2" fill="#D0D0D0" />
+                <rect x="38" y="0" width="4" height="130" rx="2" fill="var(--color-border)" />
                 
                 {/* Upper Stopper Plate */}
                 <ellipse cx="40" cy="18" rx="22" ry="4" fill="#888888" />
@@ -112,18 +112,18 @@ export default function LoadingScreen() {
                 />
                 
                 {/* Horizontal Grill Marks / Meat cuts */}
-                <path d="M20 32 Q40 40 60 32" stroke="#3B2417" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
-                <path d="M22 50 Q40 58 58 50" stroke="#2B1B12" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
-                <path d="M23 70 Q40 78 57 70" stroke="#3B2417" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
-                <path d="M25 90 Q40 98 55 90" stroke="#2B1B12" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+                <path d="M20 32 Q40 40 60 32" stroke="#241D16" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+                <path d="M22 50 Q40 58 58 50" stroke="#18130F" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+                <path d="M23 70 Q40 78 57 70" stroke="#241D16" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+                <path d="M25 90 Q40 98 55 90" stroke="#18130F" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
                 
                 {/* Vertical Seasoning Specks */}
-                <circle cx="30" cy="40" r="1.5" fill="#D4A44D" />
-                <circle cx="50" cy="45" r="1" fill="#FAFAFA" />
-                <circle cx="42" cy="62" r="1.5" fill="#D4A44D" />
-                <circle cx="34" cy="80" r="1" fill="#FAFAFA" />
-                <circle cx="48" cy="84" r="1.5" fill="#D4A44D" />
-                <circle cx="38" cy="98" r="1.2" fill="#FAFAFA" />
+                <circle cx="30" cy="40" r="1.5" fill="var(--color-brass-primary)" />
+                <circle cx="50" cy="45" r="1" fill="#F4EFEA" />
+                <circle cx="42" cy="62" r="1.5" fill="var(--color-brass-primary)" />
+                <circle cx="34" cy="80" r="1" fill="#F4EFEA" />
+                <circle cx="48" cy="84" r="1.5" fill="var(--color-brass-primary)" />
+                <circle cx="38" cy="98" r="1.2" fill="#F4EFEA" />
 
                 {/* Bottom Stopper Plate */}
                 <ellipse cx="40" cy="110" rx="18" ry="4" fill="#888888" />
@@ -131,10 +131,10 @@ export default function LoadingScreen() {
                 {/* Gradients */}
                 <defs>
                   <linearGradient id="shawarmaGrad" x1="40" y1="15" x2="40" y2="112" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#D4A44D" />
-                    <stop offset="35%" stopColor="#AD6C22" />
-                    <stop offset="70%" stopColor="#784013" />
-                    <stop offset="100%" stopColor="#3B2417" />
+                    <stop offset="0%" stopColor="var(--color-brass-primary)" />
+                    <stop offset="35%" stopColor="var(--color-brass-secondary)" />
+                    <stop offset="70%" stopColor="var(--color-bg-card)" />
+                    <stop offset="100%" stopColor="var(--color-bg-elevated)" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -146,7 +146,7 @@ export default function LoadingScreen() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="font-playfair text-3xl md:text-4xl text-brand-gold font-extrabold tracking-wider mb-2 uppercase"
+            className="font-playfair text-3xl md:text-4xl text-brass-primary font-extrabold tracking-wider mb-2 uppercase"
           >
             Arabian Shawarma
           </motion.h1>
@@ -159,7 +159,7 @@ export default function LoadingScreen() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="font-montserrat text-xs md:text-sm tracking-widest text-brand-cream uppercase"
+                className="font-montserrat text-xs md:text-sm tracking-widest text-text-secondary uppercase"
               >
                 {LOADING_STEPS[stepIndex]}
               </motion.p>
@@ -167,12 +167,12 @@ export default function LoadingScreen() {
           </div>
 
           {/* Premium linear loading bar */}
-          <div className="mt-8 w-48 h-[2px] bg-brand-secondary rounded-full overflow-hidden">
+          <div className="mt-8 w-48 h-[2px] bg-bg-secondary rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 4.2, ease: "easeInOut" }}
-              className="h-full bg-brand-gold"
+              className="h-full bg-brass-primary"
             />
           </div>
         </motion.div>

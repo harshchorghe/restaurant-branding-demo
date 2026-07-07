@@ -1,13 +1,71 @@
 @import "tailwindcss";
 
-@theme {
-  --color-brand-primary: #2B1B12;
-  --color-brand-secondary: #3B2417;
-  --color-brand-gold: #D4A44D;
-  --color-brand-cream: #F7E7CE;
-  --color-brand-white: #FAFAFA;
-  --color-brand-muted: #D0D0D0;
+/* ============================================================
+   DESIGN TOKENS — Luxury Middle Eastern Fine Dining
+   Palette language: dark walnut night, charcoal ember,
+   brushed brass, candlelight ivory. No saturated gold,
+   no muddy brown, no stark white.
+   ============================================================ */
 
+@theme {
+  /* ---- Backgrounds (layered depth, not flat) ---- */
+  --color-bg-primary: #15100C;      /* page base — near-black espresso, not brown */
+  --color-bg-secondary: #1C1611;    /* section alternation */
+  --color-bg-elevated: #241D16;     /* raised panels, nav, footer */
+  --color-bg-card: #231C15;         /* card base under glass */
+
+  /* ---- Metals (desaturated brass, not gold) ---- */
+  --color-brass-primary: #C4A06B;   /* main metal accent — antique brass */
+  --color-brass-secondary: #8E6F44; /* deep bronze, for depth/shadow side of gradients */
+  --color-brass-bright: #E4C793;    /* candlelight highlight, sparingly for glow/hover */
+
+  /* ---- Accent (authentic MENA warmth, distinct from brass) ---- */
+  --color-accent: #B15C3E;          /* charcoal-ember terracotta — grill/spice warmth */
+  --color-accent-hover: #9C4E33;
+
+  /* ---- Text (warm ivory scale, never pure white/grey) ---- */
+  --color-text-primary: #F3EBDD;    /* warm ivory, main copy */
+  --color-text-secondary: #C7BBA9;  /* supporting copy */
+  --color-text-muted: #8F8375;      /* captions, meta info */
+  --color-text-placeholder: #6B6055;
+
+  /* ---- Borders & dividers ---- */
+  --color-border: rgba(196, 160, 107, 0.16);
+  --color-border-strong: rgba(196, 160, 107, 0.32);
+  --color-divider: rgba(243, 235, 221, 0.08);
+
+  /* ---- Buttons ---- */
+  --color-btn-bg: #C4A06B;
+  --color-btn-bg-hover: #D3B47F;
+  --color-btn-text: #15100C;        /* dark text on brass = correct contrast */
+
+  /* ---- Inputs ---- */
+  --color-input-bg: #1C1611;
+  --color-input-border: rgba(196, 160, 107, 0.24);
+  --color-input-focus: #C4A06B;
+
+  /* ---- Status (muted, never neon) ---- */
+  --color-success: #6E9C7D;
+  --color-warning: #C99A52;
+  --color-error: #AE5548;
+
+  /* ---- WhatsApp (kept recognizable, slightly desaturated to sit in palette) ---- */
+  --color-whatsapp: #3FBF63;
+  --color-whatsapp-hover: #35A653;
+
+  /* ---- Interaction ---- */
+  --color-selection: rgba(196, 160, 107, 0.28);
+  --color-scrollbar-track: #1C1611;
+  --color-scrollbar-thumb: #C4A06B;
+  --color-scrollbar-thumb-hover: #E4C793;
+
+  /* ---- Glow / Shadow ---- */
+  --color-glow-brass: rgba(196, 160, 107, 0.28);
+  --color-glow-ember: rgba(177, 92, 62, 0.25);
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  --color-shadow-deep: rgba(0, 0, 0, 0.6);
+
+  /* ---- Fonts (unchanged) ---- */
   --font-playfair: var(--font-playfair), serif;
   --font-poppins: var(--font-poppins), sans-serif;
   --font-montserrat: var(--font-montserrat), sans-serif;
@@ -23,22 +81,27 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #D4A44D #2B1B12;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }
 
-/* Custom Scrollbar */
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text-primary);
+}
+
+/* ---- Custom Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #2B1B12;
+  background: var(--color-scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4A44D;
+  background: var(--color-scrollbar-thumb);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f7e7ce;
+  background: var(--color-scrollbar-thumb-hover);
 }
 
 html, body {
@@ -47,8 +110,8 @@ html, body {
 }
 
 body {
-  background: #2B1B12;
-  color: #FAFAFA;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,65 +122,211 @@ body {
   margin-right: auto !important;
 }
 
+/* ============================================================
+   SECTION BACKGROUNDS — use to break up long pages
+   ============================================================ */
+
+.section-primary {
+  background: var(--color-bg-primary);
+}
+
+.section-alt {
+  background: var(--color-bg-secondary);
+}
+
+.section-elevated {
+  background: var(--color-bg-elevated);
+}
+
+/* Subtle radial "candlelight" wash for hero / feature sections */
+.section-ambient {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(196, 160, 107, 0.08), transparent 70%),
+    var(--color-bg-primary);
+}
+
+/* Fine charcoal-grain texture overlay — apply on top of any section for depth */
+.texture-charcoal {
+  position: relative;
+}
+.texture-charcoal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+/* ============================================================
+   GLASS / CARD SYSTEM
+   ============================================================ */
+
 .glass-card {
-  background: rgba(59, 36, 23, 0.45);
+  background: rgba(35, 28, 21, 0.55);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 164, 77, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px 0 var(--color-shadow);
 }
 
 .glass-card-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-card-hover:hover {
-  background: rgba(59, 36, 23, 0.6);
-  border-color: rgba(212, 164, 77, 0.4);
-  box-shadow: 0 12px 40px 0 rgba(212, 164, 77, 0.15);
+  background: rgba(35, 28, 21, 0.72);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 12px 40px 0 var(--color-glow-brass);
   transform: translateY(-5px);
 }
 
+/* Light "ivory paper" card variant — for menu cards, light-on-dark contrast moments */
 .glass-card-cream {
-  background: #FCF9F2 !important;
-  border: 1.5px solid rgba(184, 134, 11, 0.3) !important;
-  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.4);
+  background: #F4EDE0 !important;
+  border: 1.5px solid rgba(142, 111, 68, 0.3) !important;
+  box-shadow: 0 12px 36px -10px var(--color-shadow-deep);
 }
 
 .glass-card-cream-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-card-cream-hover:hover {
-  background: #FFFDF9 !important;
-  border-color: rgba(212, 164, 77, 0.7) !important;
-  box-shadow: 0 16px 45px -10px rgba(212, 164, 77, 0.3);
+  background: #FAF5EA !important;
+  border-color: rgba(196, 160, 107, 0.65) !important;
+  box-shadow: 0 16px 45px -10px var(--color-glow-brass);
   transform: translateY(-5px);
 }
 
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn-primary {
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover {
+  background: var(--color-btn-bg-hover);
+  box-shadow: 0 8px 24px var(--color-glow-brass);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary:hover {
+  border-color: var(--color-brass-primary);
+  background: rgba(196, 160, 107, 0.08);
+  color: var(--color-brass-bright);
+}
+
+/* WhatsApp CTA — kept on-brand but instantly recognizable */
+.btn-whatsapp {
+  background: var(--color-whatsapp);
+  color: #0F1A12;
+  transition: all 0.3s ease;
+}
+.btn-whatsapp:hover {
+  background: var(--color-whatsapp-hover);
+  box-shadow: 0 8px 24px rgba(63, 191, 99, 0.3);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.input-luxury {
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  color: var(--color-text-primary);
+  transition: all 0.25s ease;
+}
+.input-luxury::placeholder {
+  color: var(--color-text-placeholder);
+}
+.input-luxury:focus {
+  outline: none;
+  border-color: var(--color-input-focus);
+  box-shadow: 0 0 0 3px var(--color-glow-brass);
+}
+
+/* ============================================================
+   TEXT / GLOW EFFECTS
+   ============================================================ */
+
 .gold-text-glow {
-  text-shadow: 0 0 15px rgba(212, 164, 77, 0.3);
+  text-shadow: 0 0 15px var(--color-glow-brass);
 }
 
 .gold-glow {
-  box-shadow: 0 0 25px rgba(212, 164, 77, 0.25);
+  box-shadow: 0 0 25px var(--color-glow-brass);
 }
 
-/* Gold Gradient text */
+.ember-glow {
+  box-shadow: 0 0 25px var(--color-glow-ember);
+}
+
+/* Brass gradient text — narrower tonal range so it reads as metal, not a rainbow */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F7E7CE 0%, #D4A44D 50%, #B8860B 100%);
+  background: linear-gradient(135deg, var(--color-brass-bright) 0%, var(--color-brass-primary) 55%, var(--color-brass-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Gold button gradient */
+/* Brushed-brass button gradient */
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #E6C280 0%, #D4A44D 100%);
+  background: linear-gradient(135deg, var(--color-brass-bright) 0%, var(--color-brass-primary) 100%);
 }
-
 .bg-gold-gradient:hover {
-  background: linear-gradient(135deg, #D4A44D 0%, #B8860B 100%);
+  background: linear-gradient(135deg, var(--color-brass-primary) 0%, var(--color-brass-secondary) 100%);
 }
 
-/* Steam particle effect */
+/* Ember/terracotta gradient — for secondary CTAs or MENA-motif accents */
+.bg-ember-gradient {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+}
+
+/* Hero overlay — dark vignette over imagery, warm at the base, near-black at top */
+.hero-overlay {
+  background: linear-gradient(
+    to top,
+    var(--color-bg-primary) 0%,
+    rgba(21, 16, 12, 0.75) 35%,
+    rgba(21, 16, 12, 0.25) 65%,
+    rgba(21, 16, 12, 0.55) 100%
+  );
+}
+
+/* Divider — thin brass hairline instead of a flat grey rule */
+.divider-brass {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
+  border: none;
+}
+
+/* ============================================================
+   STATE UTILITIES
+   ============================================================ */
+
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.bg-success { background: var(--color-success); }
+.bg-warning { background: var(--color-warning); }
+.bg-error { background: var(--color-error); }
+
+/* ============================================================
+   ANIMATIONS (unchanged mechanics, color usage noted below)
+   ============================================================ */
+
+/* Steam particle effect — tint via `color` on the parent (currentColor),
+   e.g. set color: var(--color-brass-bright) on the container for warm steam */
 @keyframes steam {
   0% {
     transform: translateY(0) translateX(0) scale(1) rotate(0deg);
@@ -154,7 +363,7 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Spice particle float animation */
+/* Spice particle float animation — use with a brass or ember fill/background */
 @keyframes drift {
   0% {
     transform: translate(0, 0) rotate(0deg);
