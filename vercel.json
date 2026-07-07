@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd arebian-shawarma && npm install && npm run build",
+  "outputDirectory": "arebian-shawarma/.next",
+  "installCommand": "echo 'skipping root install'",
+  "framework": "nextjs",
+  "rootDirectory": "arebian-shawarma"
+}
