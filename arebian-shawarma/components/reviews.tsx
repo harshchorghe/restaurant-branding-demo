@@ -78,7 +78,7 @@ export default function Reviews() {
   };
 
   return (
-    <section id="reviews" className="relative py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="reviews" className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D4A44D_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
       <div className="absolute top-1/4 left-10 w-96 h-96 opacity-[0.015] pointer-events-none select-none drift-slow">

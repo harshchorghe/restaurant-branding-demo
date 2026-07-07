@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="about" className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/3 left-0 w-[450px] h-[450px] bg-brand-gold/5 rounded-full blur-[140px] pointer-events-none" />
 

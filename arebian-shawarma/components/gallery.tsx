@@ -19,7 +19,7 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="gallery" className="relative py-24 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
+    <section id="gallery" className="relative py-12 bg-brand-secondary/40 px-6 md:px-12 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
@@ -39,44 +39,43 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Masonry Columns Layout */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:_balance]">
-          {IMAGES.map((img, idx) => (
-            <motion.div
-              key={img.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              onClick={() => setSelectedImage(img.src)}
-              className={`break-inside-avoid relative overflow-hidden rounded-3xl border border-brand-gold/15 cursor-pointer group shadow-lg ${img.aspect}`}
-            >
-              {/* Image element */}
-              <Image
-                src={img.src}
-                alt={img.title}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
+        {/* Infinite Horizontal Marquee Carousel */}
+        <div className="relative w-full overflow-hidden py-4 -mx-6 md:-mx-12 px-6 md:px-12">
+          {/* Soft Fade Overlays on Edges */}
+          <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-32 bg-gradient-to-r from-[#2D1B11] via-[#2D1B11]/50 to-transparent z-25 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-32 bg-gradient-to-l from-[#2D1B11] via-[#2D1B11]/50 to-transparent z-25 pointer-events-none" />
 
-              {/* Hover overlay glassmorphism */}
-              <div className="absolute inset-0 bg-brand-primary/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center p-6 text-center">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  className="w-12 h-12 rounded-full bg-brand-gold/20 border border-brand-gold flex items-center justify-center mb-4"
-                >
-                  <Search className="w-5 h-5 text-brand-gold" />
-                </motion.div>
-                <h3 className="font-playfair text-lg font-bold text-brand-white uppercase tracking-wider">
-                  {img.title}
-                </h3>
-                <span className="font-montserrat text-[9px] text-brand-cream uppercase tracking-[0.25em] mt-2 block">
-                  Click to Expand
-                </span>
+          {/* Marquee Tape Wrapper */}
+          <div className="animate-marquee">
+            {[...IMAGES, ...IMAGES, ...IMAGES].map((img, idx) => (
+              <div
+                key={`${img.id}-${idx}`}
+                onClick={() => setSelectedImage(img.src)}
+                className="relative w-64 h-48 sm:w-80 sm:h-56 rounded-3xl border border-brand-gold/15 cursor-pointer group shadow-lg shrink-0 mx-4 overflow-hidden"
+              >
+                {/* Image element */}
+                <Image
+                  src={img.src}
+                  alt={img.title}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+
+                {/* Hover overlay glassmorphism */}
+                <div className="absolute inset-0 bg-brand-primary/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center p-6 text-center">
+                  <div className="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold flex items-center justify-center mb-3">
+                    <Search className="w-4 h-4 text-brand-gold" />
+                  </div>
+                  <h3 className="font-playfair text-sm sm:text-base font-bold text-brand-white uppercase tracking-wider">
+                    {img.title}
+                  </h3>
+                  <span className="font-montserrat text-[8px] text-brand-cream uppercase tracking-[0.25em] mt-1 block">
+                    Click to Expand
+                  </span>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

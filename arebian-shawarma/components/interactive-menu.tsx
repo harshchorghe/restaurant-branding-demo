@@ -2,132 +2,161 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ShoppingCart } from 'lucide-react';
-import Image from 'next/image';
+import { Star, ArrowRight, Sparkles } from 'lucide-react';
 
-const CATEGORIES = ['Shawarma', 'Wraps', 'Platters', 'Burgers', 'Fries', 'Drinks'];
-
-const MENU_ITEMS = [
-  // Shawarmas
+const SPREADS = [
   {
-    name: 'Classic Chicken Saj',
-    category: 'Shawarma',
-    price: '₹189',
-    rating: 4.9,
-    image: '/images/chicken_wrap.png',
-    desc: 'Spiced charcoal chicken, pickled cucumbers, fries inside, and garlic toum wrapped in thin Saj bread.',
+    id: 0,
+    tabLabel: 'Grills & Wraps',
+    leftPage: {
+      category: 'Shawarma',
+      title: 'Rotisserie Spits & Grills',
+      subtitle: 'Charcoal Roasted Delicacies',
+      items: [
+        {
+          name: 'Classic Chicken Saj',
+          price: '₹189',
+          rating: 4.9,
+          desc: 'Spiced chicken shavings, pickles, fries, and garlic toum wrapped in thin Saj bread.',
+        },
+        {
+          name: 'Gourmet Mutton Pita',
+          price: '₹249',
+          rating: 4.8,
+          desc: 'Spiced mutton carvings, onions, tomatoes, and organic sesame tahini packed inside pita pockets.',
+        },
+        {
+          name: 'Fiery Mexican Saj',
+          price: '₹199',
+          rating: 4.7,
+          desc: 'Succulent chicken shawarma shavings tossed in jalapeños, spicy harissa spread, and melted cheese.',
+        },
+      ],
+    },
+    rightPage: {
+      category: 'Wraps',
+      title: 'Artisanal Saj Wraps',
+      subtitle: 'Hand-Rolled Fresh Flatbreads',
+      items: [
+        {
+          name: 'Classic Falafel Wrap',
+          price: '₹129',
+          rating: 4.6,
+          desc: 'Crispy fried chickpeas patties, mint leaves, tomatoes, pickled turnips, and tahini in flatbread.',
+        },
+        {
+          name: 'Crispy Paneer Saj',
+          price: '₹169',
+          rating: 4.7,
+          desc: 'Marinated paneer cubes in middle-eastern dry spices, grilled peppers, and garlic yogurt.',
+        },
+      ],
+    },
   },
   {
-    name: 'Gourmet Mutton Pita',
-    category: 'Shawarma',
-    price: '₹249',
-    rating: 4.8,
-    image: '/images/mutton_shawarma.png',
-    desc: 'Spiced mutton carvings, onions, tomatoes, and organic sesame tahini packed inside a fresh baked pita pockets.',
+    id: 1,
+    tabLabel: 'Platters & Burgers',
+    leftPage: {
+      category: 'Platters',
+      title: 'Sharing Platters',
+      subtitle: 'Grand Feasts For The Table',
+      items: [
+        {
+          name: 'Royal Mixed Platter',
+          price: '₹449',
+          rating: 4.9,
+          desc: 'Generous serving of chicken & mutton carvings, golden chips, hummus, garlic paste, pickles, and pita.',
+        },
+        {
+          name: 'Arabic Falafel Plate',
+          price: '₹299',
+          rating: 4.7,
+          desc: '6 pieces of crispy falafel, tabbouleh salad, hummus dip, garlic toum, olives, and two fresh pita breads.',
+        },
+      ],
+    },
+    rightPage: {
+      category: 'Burgers',
+      title: 'Signature Burgers',
+      subtitle: 'Flame Grilled Fusion Buns',
+      items: [
+        {
+          name: 'Spicy Zinger Burger',
+          price: '₹149',
+          rating: 4.8,
+          desc: 'Crunchy breaded chicken fillet, double cheddar, shredded lettuce, and spicy secret dressing.',
+        },
+        {
+          name: 'Charcoal Shawarma Burger',
+          price: '₹179',
+          rating: 4.9,
+          desc: 'Juicy beef and lamb patty topped with shredded chicken shawarma, garlic toum, and onions.',
+        },
+      ],
+    },
   },
   {
-    name: 'Fiery Mexican Saj',
-    category: 'Shawarma',
-    price: '₹199',
-    rating: 4.7,
-    image: '/images/chicken_wrap.png',
-    desc: 'Succulent chicken shawarma shavings tossed in jalapeños, spicy harissa spread, and melted cheese.',
-  },
-  // Wraps
-  {
-    name: 'Classic Falafel Wrap',
-    category: 'Wraps',
-    price: '₹129',
-    rating: 4.6,
-    image: '/images/about_kitchen.png',
-    desc: 'Crispy fried chickpeas patties, mint leaves, tomatoes, pickled turnips, and tahini spread in flatbread.',
-  },
-  {
-    name: 'Crispy Paneer Saj',
-    category: 'Wraps',
-    price: '₹169',
-    rating: 4.7,
-    image: '/images/chicken_wrap.png',
-    desc: 'Marinated paneer cubes in middle-eastern dry spices, grilled peppers, and creamy garlic yogurt.',
-  },
-  // Platters
-  {
-    name: 'Royal Mixed Platter',
-    category: 'Platters',
-    price: '₹449',
-    rating: 4.9,
-    image: '/images/family_platter.png',
-    desc: 'Generous serving of chicken & mutton carvings, golden chips, hummus, garlic paste, pickles, and pita.',
-  },
-  {
-    name: 'Arabic Falafel Plate',
-    category: 'Platters',
-    price: '₹299',
-    rating: 4.7,
-    image: '/images/family_platter.png',
-    desc: '6 pieces of crispy falafel, tabbouleh salad, hummus dip, garlic toum, olives, and two fresh pita breads.',
-  },
-  // Burgers
-  {
-    name: 'Spicy Zinger Burger',
-    category: 'Burgers',
-    price: '₹149',
-    rating: 4.8,
-    image: '/images/zinger_burger.png',
-    desc: 'Crunchy breaded chicken fillet, double cheddar, shredded lettuce, and spicy secret dressing.',
-  },
-  {
-    name: 'Charcoal Shawarma Burger',
-    category: 'Burgers',
-    price: '₹179',
-    rating: 4.9,
-    image: '/images/zinger_burger.png',
-    desc: 'Juicy beef and lamb patty topped with shredded chicken shawarma, garlic toum, and onions.',
-  },
-  // Fries
-  {
-    name: 'Spiced Peri Peri Fries',
-    category: 'Fries',
-    price: '₹119',
-    rating: 4.6,
-    image: '/images/loaded_fries.png',
-    desc: 'Thin-cut golden french fries tossed in aromatic African Peri-Peri spices, served with garlic dip.',
-  },
-  {
-    name: 'Shawarma Loaded Fries',
-    category: 'Fries',
-    price: '₹199',
-    rating: 4.9,
-    image: '/images/loaded_fries.png',
-    desc: 'Thick hot fries layered with shredded chicken, melted liquid cheese, dynamic hot sauce, and spring herbs.',
-  },
-  // Drinks
-  {
-    name: 'Authentic Mint Lemonade',
-    category: 'Drinks',
-    price: '₹89',
-    rating: 4.8,
-    image: '/images/about_kitchen.png',
-    desc: 'Ice-blended refreshing fresh lemon juice, crushed spearmint leaves, and organic sugar syrup.',
-  },
-  {
-    name: 'Rich Turkish Coffee',
-    category: 'Drinks',
-    price: '₹119',
-    rating: 4.9,
-    image: '/images/about_kitchen.png',
-    desc: 'Traditional strong dark coffee brewed slowly in sand, infused with aromatic cardamom seeds.',
+    id: 2,
+    tabLabel: 'Sides & Drinks',
+    leftPage: {
+      category: 'Fries',
+      title: 'Crispy Sides & Fries',
+      subtitle: 'Hot & Golden Companions',
+      items: [
+        {
+          name: 'Spiced Peri Peri Fries',
+          price: '₹119',
+          rating: 4.6,
+          desc: 'Thin-cut golden french fries tossed in aromatic African Peri-Peri spices, served with garlic dip.',
+        },
+        {
+          name: 'Shawarma Loaded Fries',
+          price: '₹199',
+          rating: 4.9,
+          desc: 'Thick hot fries layered with shredded chicken, melted liquid cheese, dynamic hot sauce, and spring herbs.',
+        },
+      ],
+    },
+    rightPage: {
+      category: 'Drinks',
+      title: 'Specialty Beverages',
+      subtitle: 'Ice Blended & Sand-Brewed',
+      items: [
+        {
+          name: 'Authentic Mint Lemonade',
+          price: '₹89',
+          rating: 4.8,
+          desc: 'Ice-blended refreshing fresh lemon juice, crushed spearmint leaves, and organic sugar syrup.',
+        },
+        {
+          name: 'Rich Turkish Coffee',
+          price: '₹119',
+          rating: 4.9,
+          desc: 'Traditional strong dark coffee brewed slowly in sand, infused with aromatic cardamom seeds.',
+        },
+      ],
+    },
   },
 ];
 
 export default function InteractiveMenu() {
-  const [activeTab, setActiveTab] = useState('Shawarma');
+  const [activeSpread, setActiveSpread] = useState(0);
+  const [direction, setDirection] = useState(1); // 1: forward, -1: backward
 
-  const filteredItems = MENU_ITEMS.filter((item) => item.category === activeTab);
+  const handleSpreadChange = (newSpread: number) => {
+    if (newSpread > activeSpread) {
+      setDirection(1);
+    } else if (newSpread < activeSpread) {
+      setDirection(-1);
+    }
+    setActiveSpread(newSpread);
+  };
+
+  const currentSpread = SPREADS[activeSpread];
 
   return (
-    <section className="relative py-24 bg-brand-secondary/20 px-6 md:px-12 overflow-hidden">
-      {/* Background elements */}
+    <section id="menu" className="relative py-12 bg-brand-secondary/20 px-6 md:px-12 overflow-hidden">
+      {/* Background glowing elements */}
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -138,101 +167,223 @@ export default function InteractiveMenu() {
             Explore Flavors
           </span>
           <h2 className="font-playfair text-4xl md:text-5xl font-black text-brand-white uppercase">
-            Interactive <span className="text-gold-gradient">Menu</span>
+            Signature <span className="text-gold-gradient">Menu</span>
           </h2>
           <div className="w-16 h-[2px] bg-brand-gold mt-4" />
           <p className="font-poppins text-brand-muted text-sm md:text-base max-w-lg mt-4 leading-relaxed">
-            Click on the tabs below to explore our categories. Fresh, hot, and handmade items.
+            Flip through our handcrafted royal restaurant menu book to discover authentic Middle Eastern flavors.
           </p>
         </div>
 
-        {/* Categories Tab Selector */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {CATEGORIES.map((category) => {
-            const isActive = activeTab === category;
+        {/* Bookmarks Tab Ribbons Wrapper */}
+        <div className="flex justify-center gap-4 md:gap-8 mb-10 z-20 relative">
+          {SPREADS.map((spread) => {
+            const isActive = activeSpread === spread.id;
             return (
               <button
-                key={category}
-                onClick={() => setActiveTab(category)}
-                className="relative px-6 py-3.5 rounded-full font-montserrat text-xs font-bold tracking-widest uppercase cursor-pointer select-none transition-all active:scale-95"
+                key={spread.id}
+                onClick={() => handleSpreadChange(spread.id)}
+                className={`relative px-4 sm:px-6 py-4 font-montserrat text-[10px] sm:text-xs font-bold tracking-widest uppercase cursor-pointer select-none transition-all duration-300 ${
+                  isActive 
+                    ? 'text-brand-primary bg-gold-gradient shadow-lg translate-y-1' 
+                    : 'text-brand-gold bg-[#3B2417] hover:bg-[#4d3020] border border-brand-gold/20 hover:border-brand-gold/40'
+                } rounded-b-2xl rounded-t-sm shadow-md flex items-center justify-center`}
+                style={{
+                  clipPath: 'polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%)',
+                  minHeight: '60px'
+                }}
               >
-                {/* Active Tab Background Slide */}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute inset-0 bg-gold-gradient rounded-full shadow-lg"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span
-                  className={`relative z-10 ${
-                    isActive ? 'text-brand-primary' : 'text-brand-cream/80 hover:text-brand-gold'
-                  }`}
-                >
-                  {category}
-                </span>
+                <span>{spread.tabLabel}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Dynamic Items Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
-                key={item.name}
-                className="glass-card rounded-2xl overflow-hidden glass-card-hover p-4 flex flex-col justify-between"
-              >
-                {/* Image */}
-                <div className="relative h-48 w-full rounded-xl overflow-hidden mb-4">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-3 right-3 bg-brand-primary/80 backdrop-blur-md px-2.5 py-1 rounded-full flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-brand-gold stroke-brand-gold" />
-                    <span className="font-montserrat text-[10px] font-bold text-brand-gold">
-                      {item.rating}
-                    </span>
-                  </div>
-                </div>
+        {/* Royal flat-open menu book container */}
+        <div className="relative max-w-4xl mx-auto bg-[#3b2417] p-3 sm:p-5 rounded-[2.5rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border-4 border-[#25150d] overflow-hidden">
+          {/* Inner gold frame border */}
+          <div className="absolute inset-4 border border-[#D4A44D]/20 rounded-[2rem] pointer-events-none z-10" />
 
-                {/* Content */}
-                <div className="flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start mb-2 gap-2">
-                      <h3 className="font-playfair text-lg font-bold text-brand-white leading-tight">
-                        {item.name}
-                      </h3>
-                      <span className="font-montserrat text-base font-extrabold text-brand-gold shrink-0">
-                        {item.price}
-                      </span>
+          {/* Golden cover corners ornaments */}
+          <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-brand-gold/30 rounded-tl-lg pointer-events-none z-10" />
+          <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-brand-gold/30 rounded-tr-lg pointer-events-none z-10" />
+          <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-brand-gold/30 rounded-bl-lg pointer-events-none z-10" />
+          <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-brand-gold/30 rounded-br-lg pointer-events-none z-10" />
+
+          {/* Book Sheets turning wrapper */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSpread}
+              initial={{ opacity: 0, rotateY: direction === 1 ? 40 : -40, scale: 0.96 }}
+              animate={{ opacity: 1, rotateY: 0, scale: 1 }}
+              exit={{ opacity: 0, rotateY: direction === 1 ? -40 : 40, scale: 0.96 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              style={{ transformOrigin: 'center center' }}
+              className="flex flex-col md:flex-row relative z-10 w-full rounded-2xl overflow-hidden shadow-2xl bg-[#FCF9F2] text-[#2B1B12] [perspective:1500px] transform-gpu"
+            >
+              {/* Vertical Crease shadow overlay (visible on desktop side-by-side spreads) */}
+              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-8 -translate-x-1/2 bg-gradient-to-r from-black/10 via-black/25 to-transparent pointer-events-none z-20" />
+              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-black/40 pointer-events-none z-20" />
+
+              {/* LEFT PAGE: Primary Category */}
+              <div className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-between min-h-[460px] relative border-b md:border-b-0 md:border-r border-brand-secondary/15">
+                {/* Paper corners decoration */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-brand-gold/30 pointer-events-none" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-brand-gold/30 pointer-events-none" />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-brand-gold/30 pointer-events-none" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-brand-gold/30 pointer-events-none" />
+
+                {/* Page Contents */}
+                <div>
+                  <div className="text-center mb-6 pt-2">
+                    {/* Flourish */}
+                    <div className="flex justify-center mb-2">
+                      <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="opacity-30">
+                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="#AD6C22" strokeWidth="1" />
+                        <circle cx="20" cy="6" r="2" fill="#D4A44D" />
+                      </svg>
                     </div>
-                    <p className="font-poppins text-brand-muted text-xs leading-relaxed mt-2">
-                      {item.desc}
+                    <h3 className="font-playfair text-2xl font-black text-brand-secondary uppercase tracking-wide">
+                      {currentSpread.leftPage.title}
+                    </h3>
+                    <p className="font-montserrat text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">
+                      {currentSpread.leftPage.subtitle}
                     </p>
                   </div>
 
-                  <a
-                    href="#contact"
-                    className="mt-6 w-full bg-brand-secondary border border-brand-gold/20 hover:bg-brand-gold hover:text-brand-primary font-montserrat text-[10px] font-bold tracking-widest uppercase py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  >
-                    <ShoppingCart className="w-3.5 h-3.5" />
-                    Add To Cart
-                  </a>
+                  {/* Items List */}
+                  <div className="space-y-6 mt-4">
+                    {currentSpread.leftPage.items.map((item, i) => (
+                      <div 
+                        key={i}
+                        onClick={() => {
+                          const element = document.getElementById('contact');
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="group/item py-2.5 cursor-pointer rounded-lg hover:bg-brand-gold/5 px-2 transition-colors duration-200"
+                      >
+                        <div className="flex items-baseline gap-2">
+                          <h4 className="font-playfair text-[#3B2417] font-bold text-sm sm:text-base group-hover/item:text-brand-gold transition-colors duration-200">
+                            {item.name}
+                          </h4>
+                          <span className="flex-1 border-b border-dotted border-[#3B2417]/25 min-w-[15px]"></span>
+                          <span className="font-montserrat text-[#3B2417] font-black text-sm sm:text-base">
+                            {item.price}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center mt-1.5">
+                          <p className="font-poppins text-[#784013] text-[11px] leading-relaxed max-w-[85%]">
+                            {item.desc}
+                          </p>
+                          <span className="text-[10px] text-brand-gold font-bold font-montserrat flex items-center gap-0.5 shrink-0">
+                            <Star className="w-2.5 h-2.5 fill-brand-gold stroke-brand-gold" />
+                            {item.rating}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+
+                {/* Page Footer */}
+                <div className="flex justify-between items-center mt-8 pt-4 border-t border-brand-secondary/10">
+                  <span className="font-montserrat text-[8px] font-bold text-brand-gold uppercase tracking-[0.2em]">
+                    Arabian Shawarma
+                  </span>
+                  <span className="font-playfair text-xs font-bold text-[#784013]/60 italic">
+                    Page {activeSpread * 2 + 1}
+                  </span>
+                </div>
+              </div>
+
+              {/* RIGHT PAGE: Secondary Category */}
+              <div className="w-full md:w-1/2 p-6 sm:p-10 flex flex-col justify-between min-h-[460px] relative">
+                {/* Paper corners decoration */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-brand-gold/30 pointer-events-none" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-brand-gold/30 pointer-events-none" />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-brand-gold/30 pointer-events-none" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-brand-gold/30 pointer-events-none" />
+
+                {/* Page Contents */}
+                <div>
+                  <div className="text-center mb-6 pt-2">
+                    {/* Flourish */}
+                    <div className="flex justify-center mb-2">
+                      <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="opacity-30">
+                        <path d="M0 6 C10 0, 10 12, 20 6 C30 0, 30 12, 40 6" stroke="#AD6C22" strokeWidth="1" />
+                        <circle cx="20" cy="6" r="2" fill="#D4A44D" />
+                      </svg>
+                    </div>
+                    <h3 className="font-playfair text-2xl font-black text-brand-secondary uppercase tracking-wide">
+                      {currentSpread.rightPage.title}
+                    </h3>
+                    <p className="font-montserrat text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">
+                      {currentSpread.rightPage.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Items List */}
+                  <div className="space-y-6 mt-4">
+                    {currentSpread.rightPage.items.map((item, i) => (
+                      <div 
+                        key={i}
+                        onClick={() => {
+                          const element = document.getElementById('contact');
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="group/item py-2.5 cursor-pointer rounded-lg hover:bg-brand-gold/5 px-2 transition-colors duration-200"
+                      >
+                        <div className="flex items-baseline gap-2">
+                          <h4 className="font-playfair text-[#3B2417] font-bold text-sm sm:text-base group-hover/item:text-brand-gold transition-colors duration-200">
+                            {item.name}
+                          </h4>
+                          <span className="flex-1 border-b border-dotted border-[#3B2417]/25 min-w-[15px]"></span>
+                          <span className="font-montserrat text-[#3B2417] font-black text-sm sm:text-base">
+                            {item.price}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center mt-1.5">
+                          <p className="font-poppins text-[#784013] text-[11px] leading-relaxed max-w-[85%]">
+                            {item.desc}
+                          </p>
+                          <span className="text-[10px] text-brand-gold font-bold font-montserrat flex items-center gap-0.5 shrink-0">
+                            <Star className="w-2.5 h-2.5 fill-brand-gold stroke-brand-gold" />
+                            {item.rating}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Page Footer */}
+                <div className="flex justify-between items-center mt-8 pt-4 border-t border-brand-secondary/10">
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById('contact');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="font-montserrat text-[8px] font-bold text-brand-gold hover:text-brand-secondary uppercase tracking-[0.2em] flex items-center gap-1 transition-colors group/order"
+                  >
+                    <span>Click Item to Order</span>
+                    <ArrowRight className="w-2.5 h-2.5 transition-transform group-hover/order:translate-x-1" />
+                  </button>
+                  <span className="font-playfair text-xs font-bold text-[#784013]/60 italic">
+                    Page {activeSpread * 2 + 2}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           </AnimatePresence>
-        </motion.div>
+        </div>
+
+        {/* Small gold sparkle reminder under the book */}
+        <div className="flex justify-center items-center gap-1.5 mt-8 text-brand-gold/40 text-[9px] tracking-[0.25em] font-montserrat uppercase select-none pointer-events-none">
+          <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+          <span>Charcoal Grilled • Organic Herbs</span>
+        </div>
       </div>
     </section>
   );

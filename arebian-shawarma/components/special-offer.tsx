@@ -15,7 +15,7 @@ export default function SpecialOffer() {
   };
 
   return (
-    <section className="relative py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Background glow overlay */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-gold/10 rounded-full blur-[100px] pointer-events-none" />
 

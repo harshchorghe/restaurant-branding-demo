@@ -34,7 +34,7 @@ export default function Hero() {
       id="home"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex items-center justify-center bg-brand-primary overflow-hidden pt-20 px-6 md:px-12"
+      className="relative min-h-[85vh] flex items-center justify-center bg-brand-primary overflow-hidden pt-24 pb-12 px-6 md:px-12"
     >
       {/* 1. Immersive Atmospheric Backdrop Background */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-secondary/80 via-brand-primary to-brand-primary" />

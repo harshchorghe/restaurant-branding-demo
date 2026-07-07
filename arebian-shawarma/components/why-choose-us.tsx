@@ -32,7 +32,7 @@ const FEATURES = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Decorative Arabic geometric star background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.015] pointer-events-none select-none drift-medium">
         <svg viewBox="0 0 100 100" fill="none" stroke="#D4A44D" strokeWidth="0.3">

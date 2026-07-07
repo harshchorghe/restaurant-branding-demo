@@ -20,7 +20,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-brand-primary px-6 md:px-12 overflow-hidden">
+    <section id="contact" className="relative py-12 bg-brand-primary px-6 md:px-12 overflow-hidden">
       {/* Glow effect */}
       <div className="absolute bottom-1/3 right-0 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -153,8 +153,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-montserrat text-[10px] font-bold uppercase tracking-widest text-brand-cream">Location</h4>
-                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">Bandra Kurla Complex</span>
-                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Mumbai, India</span>
+                  <span className="font-poppins text-xs font-semibold text-brand-white block mt-1.5">Vasai West, Vasai-Virar</span>
+                  <span className="font-poppins text-[10px] text-brand-muted block mt-0.5">Maharashtra 401207, India</span>
                 </div>
               </div>
 
@@ -204,14 +204,14 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <h4 className="font-playfair text-sm font-bold text-brand-white uppercase tracking-wider">
-                  Bandra Kurla Complex
+                <h4 className="font-playfair text-sm font-bold text-brand-white uppercase tracking-wider text-center max-w-[200px]">
+                  Vasai West Shop
                 </h4>
-                <p className="font-poppins text-[10px] text-brand-cream/80 uppercase tracking-widest mt-1">
-                  Mumbai, Maharashtra
+                <p className="font-poppins text-[10px] text-brand-cream/80 uppercase tracking-widest mt-1 text-center max-w-[200px]">
+                  Tamtalao, Vasai-Virar
                 </p>
                 <a
-                  href="https://maps.google.com"
+                  href="https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KStnYwvsr-c7MYKaS8_OHp3R&daddr=shop+no-6,+Kalpavruksha+CHS,+Tamtalao,+Mulgaon,+District:,+Vasai+West,+Palghar,+Vasai-Virar,+Maharashtra+401207"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 px-4 py-2 rounded-full border border-brand-gold/40 text-brand-gold font-montserrat text-[9px] font-bold tracking-widest uppercase hover:bg-brand-gold hover:text-brand-primary transition-colors backdrop-blur-md"
